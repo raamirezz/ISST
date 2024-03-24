@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro</title>
+    <link rel="stylesheet" href="../CSS/stylesRegsitro.css"> <!-- Enlaza tu archivo CSS aquí si lo tienes -->
+    <script src="../js/registro.js"></script>
+
+</head>
+<body>
+    <div class="registration-container">
+        <h2>Registro</h2>
+        <form action="procesar_registro.php" method="post" onsubmit="mostrarOcultarCampos()"> <!-- Cambia "procesar_registro.php" por la ruta de tu script de procesamiento de registro -->
+            <div class="form-group">
+                <label for="name">Nombre:</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="last-name">Apellidos:</label>
+                <input type="text" id="last-name" name="last-name" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="street">Calle:</label>
+                <input type="text" id="street" name="street" required>
+            </div>
+            <div class="form-group">
+                <label for="phone">Teléfono:</label>
+                <input type="tel" id="phone" name="phone" required>
+            </div>
+            <div class="form-group">
+                <label for="dni">DNI:</label>
+                <input type="text" id="dni" name="dni" required>
+            </div>
+            <div class="form-group">
+                <label for="address-type">Tipo de dirección:</label>
+                <select id="address-type" name="address-type" onchange="mostrarOcultarCampos()" required>
+                    <option value="casa">Casa</option>
+                    <option value="piso">Piso</option>
+                </select>
+            </div>
+            <div class="form-group" id="numero-casa">
+                <label for="number">Número:</label>
+                <input type="text" id="number" name="number" required pattern="[0-9]+" title="Por favor, introduce solo números">
+            </div>
+            <div class="form-group" id="portal-piso-letra" style="display: none;">
+                <label for="portal">Portal:</label>
+                <input type="text" id="portal" name="portal">
+                <label for="piso">Piso:</label>
+                <input type="text" id="piso" name="piso">
+                <label for="letra">Letra:</label>
+                <input type="text" id="letra" name="letra">
+            </div>
+            <button type="submit">Registrarse</button>
+        </form>
+    </div>
+</body>
+</html>
