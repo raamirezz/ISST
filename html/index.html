@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página Principal</title>
+    <link rel="stylesheet" href="../CSS/stylesIndex.css"> <!-- Enlaza tu archivo CSS aquí si lo tienes -->
+</head>
+<body>
+    <header>
+        <h1>Bienvenido a TuComunidad</h1>
+        <div class="profile-box"><a href="#perfil">Perfil</a></div>
+    </header>
+
+    <main>
+        <aside>
+            <a href="#foro-abierto">
+                <h2>Foro Abierto</h2>
+            </a>
+            <a href="#votaciones">
+                <h2>Votaciones</h2>
+            </a>
+            <a href="#reserva">
+                <h2>Reserva</h2>
+            </a>
+            <a href="#reuniones">
+                <h2>Reuniones</h2>
+            </a>
+        </aside>
+        <div class="titulos">
+            <h2>¿Nos dejas ayudarte?</h2>
+            <h3>Mejoraremos tu comunidad</h3>
+            <div>
+                <img id="urbanizacion" src="../Content/Urbanización1.jpeg">
+            </div>
+        </div>
+        <script>
+            // Lista de las imágenes de las urbanizaciones
+            var imagenesUrbanizaciones = [
+                "../Content/Urbanización1.jpeg",
+                "../Content/Urbanización2.jpeg",
+                "../Content/Urbanización3.jpg",
+                "../Content/Urbanización4.jpg"
+            ];
+    
+            // Función para cambiar la imagen cada 5 segundos
+            var indexImagen = 0; // Índice de la imagen actual
+            function cambiarImagen() {
+                document.getElementById("urbanizacion").src = imagenesUrbanizaciones[indexImagen];
+                indexImagen = (indexImagen + 1) % imagenesUrbanizaciones.length; // Avanzar al siguiente índice
+            }
+    
+            // Cambiar la imagen inicial
+            cambiarImagen();
+    
+            // Cambiar la imagen cada 5 segundos
+            setInterval(cambiarImagen, 5000); // 5000 milisegundos = 5 segundos
+        </script>
+    </main>
+</body>
+</html>
