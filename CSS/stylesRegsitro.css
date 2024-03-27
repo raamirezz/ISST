@@ -7,7 +7,6 @@ body {
     background-image: url('../Content/arboles.jpeg');
     background-size: cover;
     background-position: center;
-
 }
 
 .registration-container {
@@ -17,7 +16,6 @@ body {
     padding: 20px;
     border-radius: 20px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-
 }
 
 h2 {
@@ -38,13 +36,13 @@ label {
 input[type="text"],
 input[type="email"],
 input[type="tel"],
+input[type="password"],
 select {
     width: 100%;
     padding: 8px;
     border: 1px solid #ccc;
     border-radius: 3px;
     margin-bottom: 20px;
-
 }
 
 button {

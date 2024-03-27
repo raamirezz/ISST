@@ -11,7 +11,15 @@
 <body>
     <div class="registration-container">
         <h2>Registro</h2>
-        <form action="procesar_registro.php" method="post" onsubmit="mostrarOcultarCampos()"> <!-- Cambia "procesar_registro.php" por la ruta de tu script de procesamiento de registro -->
+        <form action="procesar_registro.php" method="post"> <!-- Cambia "procesar_registro.php" por la ruta de tu script de procesamiento de registro onsubmit="mostrarOcultarCampos()-->
+            <div class="form-group">
+                <label for="username">Nombre de usuario:</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Contraseña:</label>
+                <input type="password" id="password" name="password" required>
+            </div>
             <div class="form-group">
                 <label for="name">Nombre:</label>
                 <input type="text" id="name" name="name" required>
@@ -25,8 +33,17 @@
                 <input type="email" id="email" name="email" required>
             </div>
             <div class="form-group">
-                <label for="street">Calle:</label>
+                <label for="community-code">Código de la Comunidad:</label>
+                <input type="text" id="community-code" name="community-code" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="street">Dirección:</label>
                 <input type="text" id="street" name="street" required>
+            </div>
+            <div class="form-group">
+                <label for="province">Provincia:</label>
+                <input type="text" id="province" name="province" required>
             </div>
             <div class="form-group">
                 <label for="phone">Teléfono:</label>
@@ -36,27 +53,10 @@
                 <label for="dni">DNI:</label>
                 <input type="text" id="dni" name="dni" required>
             </div>
-            <div class="form-group">
-                <label for="address-type">Tipo de dirección:</label>
-                <select id="address-type" name="address-type" onchange="mostrarOcultarCampos()" required>
-                    <option value="casa">Casa</option>
-                    <option value="piso">Piso</option>
-                </select>
-            </div>
-            <div class="form-group" id="numero-casa">
-                <label for="number">Número:</label>
-                <input type="text" id="number" name="number" required pattern="[0-9]+" title="Por favor, introduce solo números">
-            </div>
-            <div class="form-group" id="portal-piso-letra" style="display: none;">
-                <label for="portal">Portal:</label>
-                <input type="text" id="portal" name="portal">
-                <label for="piso">Piso:</label>
-                <input type="text" id="piso" name="piso">
-                <label for="letra">Letra:</label>
-                <input type="text" id="letra" name="letra">
-            </div>
+            
             <button type="submit">Registrarse</button>
         </form>
     </div>
 </body>
 </html>
+

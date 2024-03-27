@@ -1,4 +1,4 @@
-function mostrarOcultarCampos() {
+/* function mostrarOcultarCampos() {
     var tipoDireccion = document.getElementById("address-type").value;
     var camposPisoPortal = document.getElementById("portal-piso-letra");
     var campoNumeroCasa = document.getElementById("number");
@@ -15,3 +15,4 @@ function mostrarOcultarCampos() {
 window.onload = function() {
     mostrarOcultarCampos(); // Asegura que los campos se muestren u oculten correctamente al cargar la página
 };
+*/
