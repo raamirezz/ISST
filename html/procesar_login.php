@@ -20,7 +20,7 @@ $username = $_POST['username'];
 $password = $_POST['password'];
 
 // Consulta para buscar al usuario en la base de datos
-$query = "SELECT * FROM usuarios WHERE username = '$username' AND password = '$password'";
+$query = "SELECT * FROM vecino WHERE nombre_usuario = '$username' AND contraseña = '$password'";
 $result = pg_query($conn, $query);
 
 // Verificar si se encontró al usuario
