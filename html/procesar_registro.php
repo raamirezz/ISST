@@ -18,32 +18,32 @@ $dni = $_POST['dni'];
 $telefono = $_POST['phone'];
 $street = $_POST['street'];
 $province = $_POST['province'];
-
 $community_code = $_POST['community-code'];
-
-
-
 
 // Consulta para insertar el nuevo usuario en la tabla VECINO
 $query_vecino = "INSERT INTO VECINO (nombre, apellidos, dni, correo, telefono, nombre_usuario, contraseña, direccion) VALUES ('$name', '$lastName', '$dni', '$email', '$telefono', '$user_name', '$password', '$street')";
 $result_vecino = pg_query($conn, $query_vecino);
 
+// Verificar si la inserción en la tabla Vecino se realizó correctamente
+if ($result_vecino) {
+    // El registro del vecino se insertó correctamente, ahora intentamos insertar el código de comunidad
+    $query_comunidad = "INSERT INTO COMUNIDAD (codigo, provincia) VALUES ('$community_code', '$province') ON CONFLICT (codigo) DO NOTHING";
+    $result_comunidad = pg_query($conn, $query_comunidad);
 
-// Consulta para insertar el nuevo usuario en la otra tabla (por ejemplo, OTRA_TABLA)
-$query_comunidad = "INSERT INTO COMUNIDAD (codigo, provincia) VALUES ('$community_code', '$province')";
-$result_comunidad = pg_query($conn, $query_comunidad);
-
-// Verificar si las consultas se realizaron correctamente
-if ($result_vecino && $result_comunidad) {
-    // Redireccionar al usuario a la página de registro exitoso
-    header("Location: registro_exitoso.html");
-    exit;
+    // Verificar si se intentó insertar el código de comunidad (puede que ya exista)
+    if ($result_comunidad) {
+        // Redireccionar al usuario a la página de registro exitoso
+        header("Location: registro_exitoso.html");
+        exit;
+    } else {
+        // Si hubo un error al insertar el código de comunidad, mostramos un mensaje de error
+        echo "Error al intentar insertar el código de comunidad.";
+    }
 } else {
+    // Si hubo un error al insertar el registro del vecino, mostramos un mensaje de error
     echo "Error al registrar el usuario.";
 }
 
 // Cerrar la conexión a la base de datos
 pg_close($conn);
 ?>
-
-
