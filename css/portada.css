@@ -32,3 +32,22 @@ p {
     max-width: 150px; /* Ajusta el tamaño máximo del ancho */
     height: auto; /* Mantiene la proporción de aspecto */
 }
+body {
+    margin-bottom: 80px; /* Añade un margen inferior */
+}
+
+/* Estilo adicional para el footer */
+footer {
+    position: fixed; /* Fija la posición del footer */
+    bottom: 0; /* Lo coloca en la parte inferior */
+    width: 100%; /* Ajusta el ancho al 100% */
+    background-color: #007bff; /* Color de fondo azul */
+    color: white; /* Color del texto blanco */
+    padding: 10px 0; /* Añade espacio interno */
+    text-align: center; /* Centra el contenido */
+}
+
+h2 {
+    font-weight: bold; /* Negrita */
+    text-decoration: underline; /* Subrayado */
+}
