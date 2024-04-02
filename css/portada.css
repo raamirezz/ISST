@@ -1,0 +1,41 @@
+/* Reset de estilos */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Estilos de la portada */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f8f8;
+}
+
+.portada-container {
+    text-align: center;
+    margin-top: 20vh;
+}
+
+.portada-container h1 {
+    font-size: 2.5em;
+    color: #333;
+}
+
+.options {
+    margin-top: 20px;
+}
+
+.option {
+    display: inline-block;
+    padding: 10px 20px;
+    margin: 0 10px;
+    background-color: #007bff;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.option:hover {
+    background-color: #0056b3;
+}
