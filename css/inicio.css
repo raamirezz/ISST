@@ -74,3 +74,10 @@ h2, h3 {
     height: auto; /* Mantén la proporción de la imagen */
     border-radius: 15px;
 }
+
+#urbanizacion {
+    width: 1000px; /* Establece un ancho fijo para todas las imágenes */
+    height: 490px; /* Establece una altura fija para todas las imágenes */
+    object-fit: cover; /* Hace que las imágenes se ajusten manteniendo la relación de aspecto */
+    border-radius: 10px; /* Añade bordes redondeados a las imágenes */
+}

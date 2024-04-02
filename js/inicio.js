@@ -13,8 +13,11 @@ function cambiarImagen() {
     indexImagen = (indexImagen + 1) % imagenesUrbanizaciones.length; // Avanzar al siguiente índice
 }
 
-// Cambiar la imagen inicial
-cambiarImagen();
+// Esperar a que el DOM esté completamente cargado antes de ejecutar la función cambiarImagen
+document.addEventListener("DOMContentLoaded", function() {
+    // Cambiar la imagen inicial
+    cambiarImagen();
 
-// Cambiar la imagen cada 5 segundos
-setInterval(cambiarImagen, 5000); // 5000 milisegundos = 5 segundos
+    // Cambiar la imagen cada 5 segundos
+    setInterval(cambiarImagen, 5000); // 5000 milisegundos = 5 segundos
+});
