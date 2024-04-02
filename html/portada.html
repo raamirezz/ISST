@@ -1,19 +1,45 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portada</title>
-    <link rel="stylesheet" href="/css/portada.css"> <!-- Incluye aquí tu archivo CSS si es necesario -->
+    <!-- Enlace al archivo CSS de Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <!-- Enlace al archivo CSS personalizado -->
+    <link rel="stylesheet" href="/css/portada.css">
+    <!-- Scripts de Bootstrap (jQuery y Popper.js ya están incluidos en el HTML de Bootstrap) -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <!-- Tu script personalizado -->
+    <script src="portada.js"></script>
 </head>
+
 <body>
-    <div class="portada-container">
-        <h1>Bienvenido a nuestra página</h1>
-        <div class="options">
-            <a href="registro.html" class="option">Registro</a>
-            <a href="login.html" class="option">Iniciar sesión</a>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <h1>Bienvenido a nuestra página</h1>
+                <div class="options">
+                    <a href="registro.html" class="btn btn-primary">Registro</a>
+                    <a href="login.html" class="btn btn-secondary">Iniciar sesión</a>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="titulos">
+                    <h2>¿Nos dejas ayudarte?</h2>
+                    <h3>Mejoraremos tu comunidad</h3>
+                    <div>
+                        <img src="/content/Urbanización1.jpeg" class="img-fluid">
+                        <!-- Agrega las imágenes adicionales aquí si las tienes -->
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-    <script src="portada.js"></script>
+
 </body>
+
 </html>

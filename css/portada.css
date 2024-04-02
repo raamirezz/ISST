@@ -1,41 +1,37 @@
-/* Reset de estilos */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+/* Estilo para el contenedor principal */
+.container {
+    margin-top: 20px; /* Espacio superior */
 }
 
-/* Estilos de la portada */
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f8f8f8;
+/* Estilo para el encabezado */
+h1 {
+    margin-bottom: 20px; /* Espacio inferior */
 }
 
-.portada-container {
-    text-align: center;
-    margin-top: 20vh;
-}
-
-.portada-container h1 {
-    font-size: 2.5em;
-    color: #333;
-}
-
+/* Estilo para los botones de opciones */
 .options {
-    margin-top: 20px;
+    margin-bottom: 20px; /* Espacio inferior */
 }
 
-.option {
-    display: inline-block;
-    padding: 10px 20px;
-    margin: 0 10px;
-    background-color: #007bff;
-    color: #fff;
-    text-decoration: none;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
+/* Estilo para los títulos */
+.titulos {
+    margin-top: 20px; /* Espacio superior */
 }
 
-.option:hover {
-    background-color: #0056b3;
+/* Estilo para los títulos h2 */
+.titulos h2 {
+    margin-bottom: 10px; /* Espacio inferior */
+}
+
+/* Estilo para los títulos h3 */
+.titulos h3 {
+    margin-bottom: 20px; /* Espacio inferior */
+}
+
+/* Estilo para las imágenes */
+.titulos img {
+    border-radius: 5px; /* Bordes redondeados */
+    margin-top: 20px; /* Espacio superior */
+    max-width: 100%; /* Ancho máximo del contenedor */
+    height: auto; /* Altura automática para mantener la proporción */
 }
