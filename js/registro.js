@@ -1,17 +1,48 @@
-// function mostrarOcultarCampos() {
-//   var tipoDireccion = document.getElementById("address-type").value;
-//   var camposPisoPortal = document.getElementById("portal-piso-letra");
-//   var campoNumeroCasa = document.getElementById("number");
+function registrar() {
+    // Obtener los valores de los campos del formulario
+    var username = document.getElementById('username').value;
+    var password = document.getElementById('password').value;
+    var name = document.getElementById('name').value;
+    var lastName = document.getElementById('last-name').value;
+    var email = document.getElementById('email').value;
+    var communityCode = document.getElementById('community-code').value;
+    var street = document.getElementById('street').value;
+    var province = document.getElementById('province').value;
+    var phone = document.getElementById('phone').value;
+    var dni = document.getElementById('dni').value;
 
-//   if (tipoDireccion === "piso") {
-//     camposPisoPortal.style.display = "block";
-//     campoNumeroCasa.style.display = "none"; // Oculta el campo de número de casa
-//   } else {
-//     camposPisoPortal.style.display = "none";
-//     campoNumeroCasa.style.display = "block"; // Muestra el campo de número de casa
-//   }
-// }
+    // Crear un objeto con los datos del formulario
+    var data = {
+        "nombre": name,
+        "apellidos": lastName,
+        "email": email,
+        "communityCode": communityCode,
+        "calle": street,
+        "provincia": province,
+        "telefono": phone,
+        "dni": dni
+    };
 
-// window.onload = function () {
-//   mostrarOcultarCampos(); // Asegura que los campos se muestren u oculten correctamente al cargar la página
-// };
+    // Realizar la solicitud POST a la API
+    fetch('http://localhost:8080/api/registro/registro', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    })
+    .then(response => {
+        if (response.ok) {
+            console.log("Datos guardados con éxito.");
+            alert("¡Registro exitoso!");
+            // Puedes redirigir al usuario a otra página o realizar alguna otra acción después de guardar los datos
+        } else {
+            console.error("Error al guardar los datos.");
+            alert("Error al registrar. Por favor, inténtalo de nuevo.");
+        }
+    })
+    .catch(error => {
+        console.error("Error al realizar la solicitud:", error);
+        alert("Error al registrar. Por favor, inténtalo de nuevo.");
+    });
+}
