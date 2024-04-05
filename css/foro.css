@@ -177,10 +177,10 @@ body {
     position: absolute;
     top: 88px;
     right: 0px;
-    background-color: #5bb1d3; /* Color del cuadrado */
-    color: white; /* Color del texto */
+    background-color: #5bb1d3; 
+    color: white;
     padding:7px 49px;
-    border-radius: 7px; /* Bordes redondeados */
+    border-radius: 7px; 
   }
   aside {
     width: 200px;
@@ -195,8 +195,8 @@ body {
   a {
     display: block;
     text-decoration: none;
-    color: #333; /* Color del texto */
-    margin-bottom: 10px; /* Espacio entre enlaces */
+    color: #333;
+    margin-bottom: 10px; 
   }
   
   a:hover {
@@ -206,23 +206,23 @@ body {
   }
   
   .titulos {
-    max-width: 100%; /* Cambia el ancho máximo según necesites */
-    margin: 0 auto; /* Centra el bloque horizontalmente */
+    max-width: 100%;
+    margin: 0 auto; 
     text-align: center;
     padding: 3%;
-    background-color: #5f96d1; /* Color de fondo azulado */
-    color: white; /* Color del texto */
+    background-color: #5f96d1; 
+    color: white;
     border-radius: 10px;
-    font-family: "Arial", sans-serif; /* Cambia el tipo de letra */
+    font-family: "Arial", sans-serif; 
   }
   
   h2, h3 {
-    margin-top: 1%; /* Elimina el margen derecho de los títulos */
+    margin-top: 1%; 
   }
   
   .titulos img {
-    max-width: 100%; /* Ajusta el ancho máximo de la imagen */
-    height: auto; /* Mantén la proporción de la imagen */
+    max-width: 100%; 
+    height: auto;
     border-radius: 15px;
   }
   
@@ -235,7 +235,7 @@ body {
   
   
   
-  main .left .inner-left .box {
+  main .left .inner-left .box_foro {
     display: flex;
     align-items: center;
     background-color: var(--whiteColor);
@@ -246,7 +246,7 @@ body {
       0 0.1rem 0.1rem rgba(0, 0, 0, 0.04);
   }
   
-  main .left .inner-left .box .img {
+  main .left .inner-left .box_foro .img {
     display: none;
     width: 4.8rem;
     height: 4.8rem;
@@ -254,37 +254,37 @@ body {
     overflow: hidden;
   }
   
-  main .left .inner-left .box .details {
+  main .left .inner-left .box_foro .details {
     padding-left: 1.2rem;
   }
   
-  main .left .inner-left .box .details p {
+  main .left .inner-left .box_foro .details p {
     font-size: 1.3rem;
     text-transform: capitalize;
     color: var(--darkGrayColor);
   }
   
-  main .left .inner-left .box .details h3 {
+  main .left .inner-left .box_foro .details h3 {
     font-weight: 700;
     color: #5f96d1;
     font-size: var(--fs18);
     letter-spacing: -0.02em;
   }
   
-  main .left .inner-left .box .details .sub-details {
+  main .left .inner-left .box_foro .details .sub-details {
     display: flex;
     align-items: center;
     flex-wrap: wrap;
     gap: 0.4rem;
   }
   
-  main .left .inner-left .box .details .sub-details span {
+  main .left .inner-left .box_foro .details .sub-details span {
     color: var(--darkGrayColor);
   }
   
   
   @media (min-width: 649px) {
-    main .left .inner-left .box .img {
+    main .left .inner-left .box_foro .img {
       display: block;
     }}
   
@@ -445,3 +445,112 @@ body {
       width: 1200px;
     }
   }
+
+  #tituloTema {
+    text-align: center;
+    margin-top: 20px; 
+  }
+
+  #descripcionTema {
+    background-color: #f0f0f0;
+    border-radius: 10px; 
+    padding: 20px;
+    margin: 20px auto; 
+    width: 80%; 
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1); 
+  }
+
+  .row {
+    display: flex;
+    justify-content: space-between;
+}
+
+.left {
+    flex: 1;
+}
+.right {
+  flex-basis: 30%; 
+  padding: 20px;
+}
+
+#formularioComentario textarea {
+    width: 100%;
+    height: 100px;
+}
+
+#formularioComentario button {
+    display: block;
+    margin: 10px auto; 
+    padding: 10px;
+    width: 50%; 
+    background-color: #5f96d1;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+#comentarios {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+
+.box_tema {
+  display: flex;
+  margin-top: 20px;
+  background-color: #f9f9f9;
+  border-radius: 20px; 
+  box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+  width: 65%;
+}
+
+.box_tema .img {
+  flex-basis: 110px; 
+  overflow: hidden;
+  border-radius: 20px 0 0 20px; 
+  display: flex;
+  align-items: center;
+}
+
+.box_tema .img img {
+  width: 50%;
+  height: auto;
+}
+
+.box_tema .details {
+  padding: 8px;
+  flex-grow: 1;
+  font-size: 0.9em; 
+}
+
+.box_tema .details p {
+  margin: 0;
+  padding: 0;
+}
+
+.sub-details {
+  margin-top: 5px;
+  font-size: 0.7em;
+  color: #666;
+}
+
+.usuario-info {
+  display: flex; /* Alinea elementos horizontalmente */
+  align-items: center; /* Alinea elementos verticalmente en el centro */
+  margin-top: 20px; /* Espacio arriba del contenedor de usuario */
+  justify-content: center;
+}
+
+.usuario-foto {
+  width: 40px; 
+  height: 40px; 
+  border-radius: 50%; 
+  object-fit: cover; 
+  margin-right: 10px;
+}
+
+.usuario-nombre {
+  font-style: italic;
+  white-space: nowrap;
+}
