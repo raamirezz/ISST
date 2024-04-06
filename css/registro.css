@@ -62,3 +62,7 @@ button:hover {
 #portal-piso-letra {
     display: none; /* Oculta estos campos por defecto */
 }
+
+.full-width {
+    width: 100%; /* Establece el ancho al 100% */
+}

@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portada</title>
+    <title>TuComunidad</title>
     <!-- Enlace al archivo CSS de Bootstrap -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <!-- Enlace al archivo CSS personalizado -->
@@ -16,14 +16,33 @@
 </head>
 
 <body>
+    <div class="jumbotron jumbotron-fluid bg-primary text-white">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <h1 class="display-4">TuComunidad</h1>
+                    <p class="lead">Mejoramos tu comunidad</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <img src="../content/logo.png" alt="Urbanización1" class="img-fluid" style="max-width: 100%; height: 200px;">
+                </div>
+            </div>
+        </div>
+    </div>
+    
     <div class="container">
         <div class="row">
-            <div class="col">
-                <h1>Bienvenido a nuestra página</h1>
-                <div class="options">
-                    <a href="registro.html" class="btn btn-primary">Registro</a>
-                    <a href="login.html" class="btn btn-secondary">Iniciar sesión</a>
-                </div>
+            <div class="col-md-6 text-center">
+                <h2>Foro</h2>
+                <p>Interactúa con otros miembros de tu comunidad!</p>
+                <img src="../content/foro_icon.png" alt="Foro" class="img-fluid">
+            </div>
+            <div class="col-md-6 text-center">
+                <h2>Votaciones</h2>
+                <p>Participa en las decisiones importantes de tu comunidad!</p>
+                <img src="../content/votacion_icon.png" alt="Votaciones" class="img-fluid">
             </div>
         </div>
         <div class="row">
@@ -32,13 +51,24 @@
                     <h2>¿Nos dejas ayudarte?</h2>
                     <h3>Mejoraremos tu comunidad</h3>
                     <div>
-                        <img src="../content/Urbanización1.jpeg" class="img-fluid">
+                        <img src="/content/Urbanización1.jpeg" class="img-fluid">
                         <!-- Agrega las imágenes adicionales aquí si las tienes -->
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
+    <div class="fixed-top mr-3 mt-3">
+        <a href="registro.html" class="btn btn-light float-right">Registro</a>
+        <a href="login.html" class="btn btn-light mr-2 float-right">Iniciar sesión</a>
+    </div>
+
+    <footer>
+        <div class="container">
+            <a href="contacto.html" class="text-white">Contáctanos</a>
+        </div>
+    </footer>
 
 </body>
 
