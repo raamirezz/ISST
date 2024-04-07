@@ -7,9 +7,9 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+
 @Entity
 @Table(name="registro")
-
 public class Registro {
 
     @Id
@@ -19,10 +19,8 @@ public class Registro {
     private String apellidos;
     private String email;
     private Long communityCode;
-    private String calle;
-    private String provincia;
-    private String telefono;
-    private String dni;
+    private String usuario;
+    private String contraseña;
 
     // Constructores
 
@@ -31,31 +29,24 @@ public class Registro {
     }
 
     // Constructor con todos los campos
-    public Registro(Long id, String nombre, String apellidos, String email, Long communityCode, String calle, String provincia, String telefono, String dni) {
+    public Registro(Long id, String nombre, String apellidos, String email, Long communityCode, String usuario, String contraseña) {
         this.id = id;
         this.nombre = nombre;
         this.apellidos = apellidos;
         this.email = email;
         this.communityCode = communityCode;
-        this.calle = calle;
-        this.provincia = provincia;
-        this.telefono = telefono;
-        this.dni = dni;
+        this.usuario = usuario;
+        this.contraseña = contraseña;
     }
 
     public Registro(RegistroDTO registroDTO) {
-        this.nombre =registroDTO.getNombre();
-        this.apellidos =registroDTO.getApellidos();
-        this.email =registroDTO.getEmail();
-        this.communityCode =registroDTO.getCommunityCode();
-        this.calle =registroDTO.getCalle();
-        this.provincia =registroDTO.getProvincia();
-        this.telefono =registroDTO.getTelefono();
-        this.dni =registroDTO.getDni();
+        this.nombre = registroDTO.getNombre();
+        this.apellidos = registroDTO.getApellidos();
+        this.email = registroDTO.getEmail();
+        this.communityCode = registroDTO.getCommunityCode();
+        this.usuario = registroDTO.getUsuario();
+        this.contraseña = registroDTO.getContraseña();
     }
-
-
-   
 
     // Getters y setters
 
@@ -99,36 +90,20 @@ public class Registro {
         this.communityCode = communityCode;
     }
 
-    public String getCalle() {
-        return calle;
+    public String getUsuario() {
+        return usuario;
     }
 
-    public void setCalle(String calle) {
-        this.calle = calle;
+    public void setUsuario(String usuario) {
+        this.usuario = usuario;
     }
 
-    public String getProvincia() {
-        return provincia;
+    public String getContraseña() {
+        return contraseña;
     }
 
-    public void setProvincia(String provincia) {
-        this.provincia = provincia;
-    }
-
-    public String getTelefono() {
-        return telefono;
-    }
-
-    public void setTelefono(String telefono) {
-        this.telefono = telefono;
-    }
-
-    public String getDni() {
-        return dni;
-    }
-
-    public void setDni(String dni) {
-        this.dni = dni;
+    public void setContraseña(String contraseña) {
+        this.contraseña = contraseña;
     }
 
     // Método toString()
@@ -141,10 +116,8 @@ public class Registro {
                 ", apellidos='" + apellidos + '\'' +
                 ", email='" + email + '\'' +
                 ", communityCode=" + communityCode +
-                ", calle='" + calle + '\'' +
-                ", provincia='" + provincia + '\'' +
-                ", telefono='" + telefono + '\'' +
-                ", dni='" + dni + '\'' +
+                ", usuario='" + usuario + '\'' +
+                ", contraseña='" + contraseña + '\'' +
                 '}';
     }
 }

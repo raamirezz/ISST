@@ -12,12 +12,18 @@
         <h2>Registro</h2>
         <form id="registration-form"> <!-- Agregado un ID al formulario -->
             <div class="form-group">
-                <label for="username">Nombre de usuario:</label>
-                <input type="text" id="username" name="username" required>
+                <label for="usuario">Nombre de usuario:</label>
+                <input type="text" id="usuario" name="usuario" required>
             </div>
             <div class="form-group">
-                <label for="password">Contraseña:</label>
-                <input type="password" id="password" name="password" required>
+                <label for="contraseña">Contraseña:</label>
+                <input type="password" id="contraseña" name="contraseña" required>
+                <small id="contraseña-help"></small> <!-- Mensaje de ayuda para la contraseña -->
+            </div>
+            <div class="form-group">
+                <label for="confirmar-contraseña">Confirmar Contraseña:</label>
+                <input type="password" id="confirmar-contraseña" name="confirmar-contraseña" required>
+                <small id="confirmar-contraseña-help"></small> <!-- Mensaje de ayuda para confirmar contraseña -->
             </div>
             <div class="form-group">
                 <label for="name">Nombre:</label>
@@ -30,27 +36,14 @@
             <div class="form-group">
                 <label for="email">Email:</label>
                 <input type="email" id="email" name="email" required>
+                <small id="email-help"></small> <!-- Mensaje de ayuda para el correo electrónico -->
             </div>
             <div class="form-group">
                 <label for="community-code">Código de la Comunidad:</label>
                 <input type="text" id="community-code" name="community-code" required>
+                <small id="community-code-help"></small> <!-- Mensaje de ayuda para el código de comunidad -->
             </div>
-            <div class="form-group">
-                <label for="street">Dirección:</label>
-                <input type="text" id="street" name="street" required>
-            </div>
-            <div class="form-group">
-                <label for="province">Provincia:</label>
-                <input type="text" id="province" name="province" required>
-            </div>
-            <div class="form-group">
-                <label for="phone">Teléfono:</label>
-                <input type="tel" id="phone" name="phone" required>
-            </div>
-            <div class="form-group">
-                <label for="dni">DNI:</label>
-                <input type="text" id="dni" name="dni" required>
-            </div>
+
             <button type="button" id="register-button" onclick="registrar()">Registrarse</button> <!-- Cambiado el tipo de botón a "button" y añadido el evento onclick -->
         </form>
     </div>
