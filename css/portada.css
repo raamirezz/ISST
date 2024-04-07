@@ -27,10 +27,17 @@ h2 {
 p {
     margin-bottom: 1.5rem;
 }
-
+.img-fluid-logo{
+    border-radius: 100%;
+}
 .img-fluid {
     max-width: 150px; /* Ajusta el tamaño máximo del ancho */
     height: auto; /* Mantiene la proporción de aspecto */
+}
+.img-fluid2 {
+    max-width: 500px; /* Ajusta el tamaño máximo del ancho */
+    height: auto; /* Mantiene la proporción de aspecto */
+    border-radius: 3%;
 }
 body {
     margin-bottom: 80px; /* Añade un margen inferior */
@@ -51,3 +58,4 @@ h2 {
     font-weight: bold; /* Negrita */
     text-decoration: underline; /* Subrayado */
 }
+
