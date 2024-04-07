@@ -8,28 +8,34 @@
     <link rel="stylesheet" href="../css/registro.css"> <!-- Enlaza tu archivo CSS aquí si lo tienes -->
 </head>
 <body>
-    <div class="registration-container">
-        <h2>Contáctanos</h2>
-        <form action="procesar_contacto.php" method="post"> <!-- Cambia "procesar_registro.php" por la ruta de tu script de procesamiento de registro onsubmit="mostrarOcultarCampos()"-->
-            <div class="form-group">
-                <label for="name">Nombre:</label>
-                <input type="text" id="name" name="name" required>
+    <div class="container">
+        <div class="row justify-content-center mt-5">
+            <div class="col-md-6">
+                <div class="registration-container">
+                    <h2 class="text-center">Contáctanos</h2>
+                    <form action="procesar_contacto.php" method="post">
+                        <div class="form-group">
+                            <label for="name">Nombre:</label>
+                            <input type="text" class="form-control" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email:</label>
+                            <input type="email" class="form-control" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="asunto">Asunto:</label>
+                            <input type="text" class="form-control" id="asunto" name="asunto" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="mensaje">Tu mensaje (opcional):</label>
+                            <textarea id="mensaje" name="mensaje" rows="5" class="form-control"></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary btn-block">Enviar</button>
+                    </form>
+                </div>
             </div>
-            <div class="form-group">
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email" required>
-            </div>
-            <div class="form-group">
-                <label for="asunto">Asunto:</label>
-                <input type="text" id="asunto" name="asunto" required>
-            </div>
-            <div class="form-group">
-                <label for="mensaje">Tu mensaje (opcional):</label>
-                <textarea id="mensaje" name="mensaje" rows="5" class="full-width"></textarea> <!-- Cambiado a un textarea con clase "full-width" -->
-            </div>
-            
-            <button type="submit">Enviar</button>
-        </form>
+        </div>
     </div>
 </body>
 </html>

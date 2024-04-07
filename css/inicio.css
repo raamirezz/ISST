@@ -13,6 +13,7 @@ header {
     border-radius: 5px;
 }
 
+
 h1 {
     font-size: 36px;
 }
@@ -22,12 +23,15 @@ main {
     justify-content: space-between;
     padding: 20px;
 }
+.profile.html{
+    color: white;
+}
 .profile-box {
+    color: white; 
     position: absolute;
-    top: 88px;
+    top: 5%;
     right: 0px;
     background-color: #5bb1d3; /* Color del cuadrado */
-    color: white; /* Color del texto */
     padding:7px 49px;
     border-radius: 7px; /* Bordes redondeados */
 }
@@ -47,7 +51,12 @@ a {
     color: #333; /* Color del texto */
     margin-bottom: 10px; /* Espacio entre enlaces */
 }
-
+.asideLetras{
+    font-family: Arial, sans-serif;
+    font-size:x-large;
+    color: #5bb1d3;
+    font-weight: bold;
+}
 a:hover {
     background-color: #ddd;
     
