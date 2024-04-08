@@ -1,7 +1,5 @@
 package com.isst.demo.service;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -10,7 +8,7 @@ import com.isst.demo.entity.Registro;
 import com.isst.demo.repository.RegistroRepository;
 
 @Service
-public class RegistroServiceImpl {
+public class RegistroServiceImpl implements RegistroService{
 
     @Autowired
     private RegistroRepository registroRepository;

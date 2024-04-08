@@ -1,30 +1,24 @@
 package com.isst.demo.controller;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.isst.demo.dto.RegistroDTO;
 import com.isst.demo.entity.Registro;
 import com.isst.demo.service.RegistroService;
-import com.isst.demo.service.RegistroServiceImpl;
 
-@CrossOrigin(origins = {"http://localhost:5501","http://localhost:8080"})
+@CrossOrigin(origins = {"*"})
 @RestController
 @RequestMapping("api/registro/")
 public class RegistroController {
 
     @Autowired
-    private RegistroServiceImpl registroService;
+    private RegistroService registroService;
 
     // Maneja las solicitudes GET a la ruta /registro
     @GetMapping("registros")

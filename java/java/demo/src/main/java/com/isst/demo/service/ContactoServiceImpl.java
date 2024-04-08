@@ -10,7 +10,7 @@ import com.isst.demo.entity.Contacto;
 import com.isst.demo.repository.ContactoRepository;
 
 @Service
-public class ContactoServiceImpl {
+public class ContactoServiceImpl implements ContactoService {
 
     @Autowired
     private ContactoRepository contactoRepository;

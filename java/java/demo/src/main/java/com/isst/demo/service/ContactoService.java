@@ -8,7 +8,6 @@ import com.isst.demo.entity.Contacto;
 public interface ContactoService {
 
     public void crearContactoFormulario (ContactoDTO contactoDTO);
-    public List <Contacto> consultarContacto();
+    public Contacto consultarContacto();
     
 }
-
