@@ -231,12 +231,7 @@ body {
   #urbanizacion {
     width: 1000px; height: 490px; object-fit: cover; border-radius: 10px; 
   }
-  
-  
-  
-  
-  
-  
+
   main .left .inner-left .box_foro {
     display: flex;
     align-items: center;
