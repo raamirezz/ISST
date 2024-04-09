@@ -26,6 +26,9 @@ main {
 .profile.html{
     color: white;
 }
+.profileboxletra{
+    color: #f2f2f2;
+}
 .profile-box {
     color: white; 
     position: absolute;
