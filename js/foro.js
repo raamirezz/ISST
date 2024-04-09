@@ -7,6 +7,46 @@ document.getElementById('addTopicBtn').addEventListener('click', function() {
   document.getElementById('addTopicForm').style.display = 'block';
 });
 
+function calcularHaceTiempo(fecha) {
+  const fechaCreacion = new Date(fecha);
+  const ahora = new Date();
+  const diferencia = ahora - fechaCreacion; // Diferencia en milisegundos
+
+  const minutos = Math.floor(diferencia / 60000);
+  const horas = Math.floor(minutos / 60);
+  const dias = Math.floor(horas / 24);
+
+  if (dias > 0) return `Hace ${dias} día(s)`;
+  if (horas > 0) return `Hace ${horas} hora(s)`;
+  return `Hace ${minutos} minuto(s)`;
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+  fetch('http://localhost:8080/api/tema/temas') // Asegúrate de que la URL coincida con tu endpoint
+    .then(response => response.json())
+    .then(temas => {
+      const innerLeftDiv = document.querySelector('.inner-left');
+      temas.forEach(tema => {
+        const temaElement = document.createElement('div');
+        temaElement.className = 'box_foro';
+        const haceTiempo = calcularHaceTiempo(tema.fechaCreacion);
+        temaElement.innerHTML = `
+          <div class="img">
+            <img src="../Content/302688.jpg" alt="" />
+          </div>
+          <div class="details">
+            <h3><a href="javascript:void(0);" onclick="verDetalle('${tema.titulo}')">${tema.titulo}</a></h3>
+            <div class="sub-details">
+            <span>${haceTiempo}</span>
+            </div>
+          </div>
+        `;
+        innerLeftDiv.appendChild(temaElement);
+      });
+    })
+    .catch(error => console.error('Error al cargar temas:', error));
+});
+
 // function submitTopic() {
 //   const title = document.getElementById('topicTitle').value;
 //   const description = document.getElementById('topicDetails').value;
@@ -62,14 +102,20 @@ function submitTopic() {
       },
       body: JSON.stringify(data)
   })
-  .then(response => response.json())
-  .then(data => {
-      console.log("Tema creado exitosamente", data);
-      // Aquí podrías redirigir al usuario o mostrar algún mensaje de éxito
-  })
-  .catch(error => {
-      console.error("Hubo un error al crear el tema", error);
-  });
+  .then(response => {
+    if (response.ok) {
+        console.log("Tema creado exitosamente");
+        // Recargar la página para mostrar el nuevo tema
+        location.reload();
+    } else {
+        throw new Error('La solicitud no se completó como se esperaba.');
+    }
+})
+.catch(error => {
+    console.error("Hubo un error al crear el tema", error);
+});
+
+
 
   // Restablecer el formulario y cerrarlo
   document.getElementById('addTopicForm').style.display = 'none';

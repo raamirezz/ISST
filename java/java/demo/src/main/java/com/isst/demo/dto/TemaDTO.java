@@ -8,24 +8,27 @@ public class TemaDTO {
     private String titulo;
     private String descripcion;
     private LocalDateTime fechaCreacion;
+    private Boolean isImportant;
 
     // Constructor vacío (obligatorio para JPA)
     public TemaDTO() {
     }
 
     // Constructor con todos los campos
-    public TemaDTO(Long id, String titulo, String descripcion, LocalDateTime fechaCreacion) {
+    public TemaDTO(Long id, String titulo, String descripcion, LocalDateTime fechaCreacion, Boolean isImportant) {
         this.id = id;
         this.titulo = titulo;
         this.descripcion = descripcion;
         this.fechaCreacion = fechaCreacion;
+        this.isImportant = isImportant;
     }
 
     // Constructor sin ID
-    public TemaDTO(String titulo, String descripcion, LocalDateTime fechaCreacion) {
+    public TemaDTO(String titulo, String descripcion, LocalDateTime fechaCreacion, Boolean isImportant) {
         this.titulo = titulo;
         this.descripcion = descripcion;
         this.fechaCreacion = fechaCreacion;
+        this.isImportant = isImportant;
     }
 
     // Getters y setters
@@ -62,6 +65,13 @@ public class TemaDTO {
         this.fechaCreacion = fechaCreacion;
     }
 
+    public Boolean getIsImportant() {
+        return isImportant;
+    }
+
+    public void setIsImportant(Boolean isImportant) {
+        this.isImportant = isImportant;
+    }
 
 
     // Método toString()
@@ -73,6 +83,7 @@ public class TemaDTO {
                 ", titulo='" + titulo + '\'' +
                 ", descripcion='" + descripcion + '\'' +
                 ", fechaCreacion=" + fechaCreacion +
+                ", isImportant=" + isImportant +
                 '}';
     }
 }
