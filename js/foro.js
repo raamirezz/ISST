@@ -25,6 +25,8 @@ document.addEventListener('DOMContentLoaded', function() {
   fetch('http://localhost:8080/api/tema/temas') // Asegúrate de que la URL coincida con tu endpoint
     .then(response => response.json())
     .then(temas => {
+      temas.sort((a, b) => new Date(b.fechaCreacion) - new Date(a.fechaCreacion));
+      
       const innerLeftDiv = document.querySelector('.inner-left');
       temas.forEach(tema => {
         const temaElement = document.createElement('div');
@@ -35,7 +37,7 @@ document.addEventListener('DOMContentLoaded', function() {
             <img src="../Content/302688.jpg" alt="" />
           </div>
           <div class="details">
-            <h3><a href="javascript:void(0);" onclick="verDetalle('${tema.titulo}')">${tema.titulo}</a></h3>
+          <h3><a href="temaForo.html?id=${tema.id}">${tema.titulo}</a></h3>
             <div class="sub-details">
             <span>${haceTiempo}</span>
             </div>
