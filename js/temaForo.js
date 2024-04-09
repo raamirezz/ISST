@@ -1,87 +1,82 @@
 // document.addEventListener('DOMContentLoaded', function() {
-//     const temaTitulo = localStorage.getItem('temaTitulo'); 
-//     const temaDescripcion = localStorage.getItem('temaDescripcion'); 
-//     const usuarioNombre = localStorage.getItem('usuarioNombre');
-//     const usuarioFoto = localStorage.getItem('usuarioFoto');
-
-//     document.getElementById('tituloTema').textContent = temaTitulo;
-
-//     const userInfoHTML = `
-//     <div class="usuario-info">
-//         <img src="${usuarioFoto}" alt="Foto del usuario" class="usuario-foto">
-//         <p class="usuario-nombre">${usuarioNombre}</p>
-//     </div>
-// `;
-    // document.getElementById('tituloTema').insertAdjacentHTML('beforebegin', userInfoHTML);
-    // document.getElementById('descripcionTema').textContent = temaDescripcion;
-   
-
+//     // Extrae el ID del tema de la URL
+//     const urlParams = new URLSearchParams(window.location.search);
+//     const temaId = urlParams.get('id');
+  
+//     fetch(`http://localhost:8080/api/tema/${temaId}`) // Ajusta la URL según tu API
+//       .then(response => response.json())
+//       .then(tema => {
+//         document.getElementById('temaForo').innerHTML = `
+//           <h2 id="tituloTema">${tema.titulo}</h2>
+//           <p id="descripcionTema">${tema.descripcion}</p>
+//           <div id="comentarios"></div>
+//         `;
+//       })
+//       .catch(error => console.error('Error al cargar el tema:', error));
+//   });
+  
 document.addEventListener('DOMContentLoaded', function() {
-    // Extrae el ID del tema de la URL
-    const urlParams = new URLSearchParams(window.location.search);
-    const temaId = urlParams.get('id');
-  
-    fetch(`http://localhost:8080/api/tema/${temaId}`) // Ajusta la URL según tu API
-      .then(response => response.json())
-      .then(tema => {
-        document.getElementById('temaForo').innerHTML = `
-          <h2 id="tituloTema">${tema.titulo}</h2>
-          <p id="descripcionTema">${tema.descripcion}</p>
-        `;
-      })
-      .catch(error => console.error('Error al cargar el tema:', error));
+  const urlParams = new URLSearchParams(window.location.search);
+  const temaId = urlParams.get('id');
+
+  // Cargar los detalles del tema
+  fetch(`http://localhost:8080/api/tema/${temaId}`)
+    .then(response => response.json())
+    .then(tema => {
+      document.getElementById('temaForo').innerHTML = `
+        <h2 id="tituloTema">${tema.titulo}</h2>
+        <p id="descripcionTema">${tema.descripcion}</p>
+      `;
+      // Llamar a cargarComentarios después de cargar el tema
+      cargarComentarios(temaId);
+    })
+    .catch(error => console.error('Error al cargar el tema:', error));
+
+  // Enviar un nuevo comentario
+  document.getElementById('formularioComentario').addEventListener('submit', function(e) {
+      e.preventDefault(); 
+      const textoComentario = document.getElementById('textoComentario').value;
+
+      if (textoComentario) {
+          const comentarioData = {
+              descripcion: textoComentario,
+              temaId: temaId, // Asegúrate de enviar el ID del tema
+          };
+
+          // Enviar el comentario a la API
+          fetch('http://localhost:8080/api/comentarios/crear', {
+              method: 'POST',
+              headers: {
+                  'Content-Type': 'application/json'
+              },
+              body: JSON.stringify(comentarioData)
+          })
+          .then(response => response.json())
+          .then(comentario => {
+              console.log('Comentario creado:', comentario);
+              // Llamar a cargarComentarios para actualizar la lista de comentarios
+              cargarComentarios(temaId);
+          })
+          .catch(error => console.error('Error al crear comentario:', error));
+      }
   });
-  
+});
 
-
-//   document.getElementById('formularioComentario').addEventListener('submit', function(e) {
-//     e.preventDefault(); 
-    
-//     const textoComentario = document.getElementById('textoComentario').value;
-//     if (textoComentario) {
-//         const comentarioHTML = document.createElement('div');
-//     comentarioHTML.className = 'box_tema';
-//     comentarioHTML.innerHTML = `
-//         <div class="img">
-//             <img src="../Content/302688.jpg" alt="" />
-//         </div>
-//         <div class="details">
-//             <p>${textoComentario}</p>
-//             <div class="sub-details">
-//                 <span>User</span>
-//                 <span>respondió</span>
-//                 <span>justo ahora</span>
-//             </div>
-//         </div>
-//     `;
-
-//     document.getElementById('comentarios').appendChild(comentarioHTML);
-
-//     document.getElementById('textoComentario').value = '';
-// }
-// });
-//     // Placeholder
-//     const comentarios = [
-//         "Comentario 1",
-//         "Comentario 2",
-//         "Comentario 3"
-//     ];
-
-
-
-//     // const temaDetalleEl = document.getElementById('temaDetalle');
-//     // temaDetalleEl.innerHTML = `
-//     //     <h2>${temaTitulo}</h2>
-//     //     <div class="usuario-info">
-//     //         <img src="${usuarioFoto}" class="usuario-foto">
-//     //         <span class="usuario-nombre">${usuarioNombre}</span>
-//     //     </div>
-//     //     <p>${temaDescripcion}</p>
-//     // `;
-
-//     const comentariosEl = document.getElementById('comentarios');
-//     comentarios.forEach(comentario => {
-//         comentariosEl.innerHTML += `<p>${comentario}</p>`;
-//     });
-// });
-
+// Función para cargar y mostrar comentarios
+function cargarComentarios(temaId) {
+  fetch(`http://localhost:8080/api/comentarios/tema/${temaId}`) // Ajusta la URL según cómo hayas definido el endpoint para obtener comentarios de un tema
+    .then(response => response.json())
+    .then(comentarios => {
+      const comentariosDiv = document.getElementById('comentarios');
+      comentariosDiv.innerHTML = ''; // Limpiar comentarios existentes
+      comentarios.forEach(comentario => {
+          const comentarioElement = document.createElement('div');
+          comentarioElement.className = 'comentario';
+          comentarioElement.innerHTML = `
+            <p>${comentario.descripcion}</p>
+          `;
+          comentariosDiv.appendChild(comentarioElement);
+      });
+    })
+    .catch(error => console.error('Error al cargar comentarios:', error));
+}

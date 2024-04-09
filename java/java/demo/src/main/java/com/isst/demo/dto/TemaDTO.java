@@ -1,6 +1,9 @@
 package com.isst.demo.dto;
 
 import java.time.LocalDateTime;
+import java.util.List;
+
+
 
 public class TemaDTO {
 
@@ -9,26 +12,29 @@ public class TemaDTO {
     private String descripcion;
     private LocalDateTime fechaCreacion;
     private Boolean isImportant;
+    private List<ComentariosDTO> comentarios;
 
     // Constructor vacío (obligatorio para JPA)
     public TemaDTO() {
     }
 
     // Constructor con todos los campos
-    public TemaDTO(Long id, String titulo, String descripcion, LocalDateTime fechaCreacion, Boolean isImportant) {
+    public TemaDTO(Long id, String titulo, String descripcion, LocalDateTime fechaCreacion, Boolean isImportant, List<ComentariosDTO> comentarios) {
         this.id = id;
         this.titulo = titulo;
         this.descripcion = descripcion;
         this.fechaCreacion = fechaCreacion;
         this.isImportant = isImportant;
+        this.comentarios = comentarios;
     }
 
     // Constructor sin ID
-    public TemaDTO(String titulo, String descripcion, LocalDateTime fechaCreacion, Boolean isImportant) {
+    public TemaDTO(String titulo, String descripcion, LocalDateTime fechaCreacion, Boolean isImportant, List<ComentariosDTO> comentarios) {
         this.titulo = titulo;
         this.descripcion = descripcion;
         this.fechaCreacion = fechaCreacion;
         this.isImportant = isImportant;
+        this.comentarios = comentarios;
     }
 
     // Getters y setters
@@ -71,6 +77,14 @@ public class TemaDTO {
 
     public void setIsImportant(Boolean isImportant) {
         this.isImportant = isImportant;
+    }
+
+    public List<ComentariosDTO> getComentarios() {
+        return comentarios;
+    }
+
+    public void setComentarios(List<ComentariosDTO> comentarios) {
+        this.comentarios = comentarios;
     }
 
 

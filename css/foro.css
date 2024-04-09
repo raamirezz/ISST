@@ -232,6 +232,12 @@ body {
     width: 1000px; height: 490px; object-fit: cover; border-radius: 10px; 
   }
 
+  main .left {
+    max-width: 850px; /* O el ancho máximo deseado */
+    width: 100%; /* Opcional, hace que el contenedor sea responsivo hasta el máximo */
+    margin: 0 auto; /* Centra el contenedor si es más estrecho que su contenedor padre */
+  }
+
   main .left .inner-left .box_foro {
     display: flex;
     align-items: center;
@@ -443,17 +449,27 @@ body {
     }
   }
 
+  #temaForo {
+    word-wrap: break-word;
+  overflow-wrap: break-word;
+  max-width: 100%; /* Ajusta a la anchura máxima deseada */
+  box-sizing: border-box;
+  }
+
   #tituloTema {
     text-align: center;
     margin-top: 20px; 
   }
 
   #descripcionTema {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
     background-color: #f0f0f0;
     border-radius: 10px; 
     padding: 20px;
     margin: 20px auto; 
     width: 80%; 
+    box-sizing: border-box;
     box-shadow: 0 4px 6px rgba(0,0,0,0.1); 
   }
 

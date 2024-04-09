@@ -1,45 +1,41 @@
 package com.isst.demo.entity;
 
 import java.time.LocalDateTime;
-import java.util.List;
 
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.PrePersist;
 import jakarta.persistence.Table;;
 
 @Entity
-@Table(name="tema")
-public class Tema {
+@Table(name="Comentarios")
+public class Comentarios {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String titulo;
     private String descripcion;
     private LocalDateTime fechaCreacion;
-    private Boolean isImportant;
 
-    // Relación de uno a muchos: Un tema puede tener muchos comentarios
-    @OneToMany(mappedBy = "tema", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<Comentarios> comentarios;
+    // Relación de muchos a uno: Muchos comentarios pueden pertenecer a un tema
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "tema_id")
+    private Tema tema;
 
 
     // Constructor vacío (obligatorio para JPA)
-    public Tema() {
+    public Comentarios() {
     }
 
     // Constructor con todos los campos excepto el ID
-    public Tema(String titulo, String descripcion, LocalDateTime fechaCreacion, boolean isImportant) {
-        this.titulo = titulo;
+    public Comentarios(String descripcion, LocalDateTime fechaCreacion) {
         this.descripcion = descripcion;
         this.fechaCreacion = fechaCreacion;
-        this.isImportant = isImportant;
     }
 
     // Getters y setters
@@ -50,14 +46,6 @@ public class Tema {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public String getTitulo() {
-        return titulo;
-    }
-
-    public void setTitulo(String titulo) {
-        this.titulo = titulo;
     }
 
     public String getDescripcion() {
@@ -81,34 +69,23 @@ public class Tema {
         this.fechaCreacion = LocalDateTime.now();
     }
 
-    public Boolean getIsImportant() {
-        return isImportant;
+    public Tema getTema() {
+        return tema;
     }
 
-    public void setIsImportant(Boolean isImportant) {
-        this.isImportant = isImportant;
+    public void setTema(Tema tema) {
+        this.tema = tema;
     }
-
-    public List<Comentarios> getComentarios() {
-        return comentarios;
-    }
-
-    public void setComentarios(List<Comentarios> comentarios) {
-        this.comentarios = comentarios;
-    }
-
 
     // Método toString()
 
     @Override
     public String toString() {
-        return "Tema{" +
+        return "Comentarios{" +
                 "id=" + id +
-                ", titulo='" + titulo + '\'' +
                 ", descripcion='" + descripcion + '\'' +
                 ", fechaCreacion=" + fechaCreacion +
-                ", isImportant=" + isImportant +
-                ", comentarios=" + comentarios +
+                ", tema=" + tema +
                 '}';
     }
 }
