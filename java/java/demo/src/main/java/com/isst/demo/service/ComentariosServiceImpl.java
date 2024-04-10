@@ -36,12 +36,7 @@ public class ComentariosServiceImpl implements ComentariosService {
                     .collect(Collectors.toList());
     }
 
-    @Override
-    public ComentariosDTO obtenerComentariosPorId(Long id) {
-        Comentarios comentario = ComentariosRepository.findById(id).orElseThrow(() -> new RuntimeException("comentario no encontrado"));
-        return modelMapper.map(comentario, ComentariosDTO.class);
-    }
-
+    
     @Override
     public ComentariosDTO crearComentario(ComentariosDTO comentariosDTO) {
         Tema tema = temaRepository.findById(comentariosDTO.getTemaId())
@@ -53,6 +48,15 @@ public class ComentariosServiceImpl implements ComentariosService {
         Comentarios nuevoComentario = ComentariosRepository.save(comentario);
         return modelMapper.map(nuevoComentario, ComentariosDTO.class);
     }
+
+    @Override
+public List<ComentariosDTO> obtenerComentariosPorTemaId(Long temaId) {
+    List<Comentarios> comentarios = ComentariosRepository.findByTemaId(temaId);
+    return comentarios.stream()
+                      .map(comentario -> modelMapper.map(comentario, ComentariosDTO.class))
+                      .collect(Collectors.toList());
+}
+
 
     
 }

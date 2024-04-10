@@ -32,6 +32,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const temaElement = document.createElement('div');
         temaElement.className = 'box_foro';
         const haceTiempo = calcularHaceTiempo(tema.fechaCreacion);
+        let importantImg = tema.isImportant ? '<img src="../Content/importante.png" alt="Importante" style="width: 30px; height: 30px" />' : '';
         temaElement.innerHTML = `
           <div class="img">
             <img src="../Content/302688.jpg" alt="" />
@@ -42,6 +43,9 @@ document.addEventListener('DOMContentLoaded', function() {
             <span>${haceTiempo}</span>
             </div>
           </div>
+          <div class="img_important">
+          ${importantImg}
+          </div>
         `;
         innerLeftDiv.appendChild(temaElement);
       });
@@ -49,41 +53,6 @@ document.addEventListener('DOMContentLoaded', function() {
     .catch(error => console.error('Error al cargar temas:', error));
 });
 
-// function submitTopic() {
-//   const title = document.getElementById('topicTitle').value;
-//   const description = document.getElementById('topicDetails').value;
-//   const user = "Usuario"; 
-//   const timeAgo = "Justo ahora"; // placeholder
-
-//   const topicContainer = document.createElement('div');
-//   topicContainer.className = 'box_foro';
-//   topicContainer.innerHTML = `
-//   <div class="img">
-//       <img src="../Content/302688.jpg" alt="" />
-//   </div>
-//   <div class="details">
-//       <h3><a href="javascript:void(0);" onclick="verDetalle('${title}')">${title}</a></h3>
-//       <div class="sub-details">
-//       <span>${user}</span>
-//                    <span>${timeAgo}</span>
-//                    <div class="comment">
-//                        <i class="fa-solid fa-comment"></i>
-//                        <span>0</span>
-//                    </div>
-//       </div>
-//   </div>
-// `;
-//   localStorage.setItem('temaTitulo', title);
-//   localStorage.setItem('temaDescripcion', description);
-//   localStorage.setItem('usuarioNombre', 'Usuario 1');
-// localStorage.setItem('usuarioFoto', '../Content/302688.jpg');
-
-//   document.querySelector('.inner-left').appendChild(topicContainer);
-
-//   document.getElementById('addTopicForm').style.display = 'none';
-//   document.getElementById('topicTitle').value = '';
-//   document.getElementById('topicDetails').value = '';
-// }
 
 function submitTopic() {
   // Obtener los valores del formulario

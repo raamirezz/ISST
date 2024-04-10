@@ -31,11 +31,11 @@ public class ComentariosController {
     }
 
     // Obtener un tema por ID
-    @GetMapping("/{id}")
-    public ResponseEntity<ComentariosDTO> obtenerComentariosPorId(@PathVariable Long id) {
-        ComentariosDTO comentario = comentariosService.obtenerComentariosPorId(id);
-        return ResponseEntity.ok().body(comentario);
-    }
+    @GetMapping("/porTema/{temaId}")
+public ResponseEntity<List<ComentariosDTO>> obtenerComentariosPorTemaId(@PathVariable Long temaId) {
+    List<ComentariosDTO> comentarios = comentariosService.obtenerComentariosPorTemaId(temaId);
+    return ResponseEntity.ok().body(comentarios);
+}
 
     // Crear un nuevo tema
     @PostMapping("/crear")
@@ -43,6 +43,8 @@ public class ComentariosController {
         ComentariosDTO nuevoComentarios = comentariosService.crearComentario(comentariosDTO);
         return ResponseEntity.ok().body(nuevoComentarios);
     }
+
+    
 
     
 

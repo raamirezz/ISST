@@ -250,15 +250,27 @@ body {
   }
   
   main .left .inner-left .box_foro .img {
+    flex-shrink: 0;
     display: none;
     width: 4.8rem;
     height: 4.8rem;
     border-radius: 0.8rem;
     overflow: hidden;
   }
+
+  main .left .inner-left .box_foro .img_important {
+    flex-shrink: 0;
+    margin-left: auto;
+    width: 4.8rem;
+    height: 4.8rem;
+    border-radius: 0.8rem;
+  }
   
   main .left .inner-left .box_foro .details {
     padding-left: 1.2rem;
+    word-wrap: break-word;
+  overflow-wrap: break-word;
+  max-width: 92%;
   }
   
   main .left .inner-left .box_foro .details p {
@@ -480,6 +492,7 @@ body {
 
 .left {
     flex: 1;
+    
 }
 .right {
   flex-basis: 30%; 
@@ -502,12 +515,6 @@ body {
     cursor: pointer;
 }
 
-#comentarios {
-    margin-top: 20px;
-    display: flex;
-    justify-content: center;
-}
-
 
 .box_tema {
   display: flex;
@@ -518,12 +525,14 @@ body {
   width: 65%;
 }
 
+
+
 .box_tema .img {
   flex-basis: 110px; 
-  overflow: hidden;
   border-radius: 20px 0 0 20px; 
   display: flex;
   align-items: center;
+  
 }
 
 .box_tema .img img {
@@ -567,3 +576,63 @@ body {
   font-style: italic;
   white-space: nowrap;
 }
+
+main .left .inner-left .box_foro {
+  display: flex;
+  align-items: center;
+  background-color: var(--whiteColor);
+  padding: 0.9rem 1.2rem;
+  border-radius: 0.7rem;
+  margin-bottom: 0.9rem;
+  box-shadow: 0 0.2rem 0.4rem rgba(0, 0, 0, 0.11),
+    0 0.1rem 0.1rem rgba(0, 0, 0, 0.04);
+}
+
+.img_comment {
+  flex-shrink: 0;
+  display: none;
+  width: 4.8rem;
+  height: 4.8rem;
+  border-radius: 0.8rem;
+  overflow: hidden;
+}
+
+.details_comment {
+  padding-left: 1.2rem;
+  flex-grow: 1;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  max-width: 88%;
+  
+}
+
+.details_comment .sub-details_comment {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.details_comment .sub-details_comment span {
+  color: var(--darkGrayColor);
+}
+
+
+@media (min-width: 649px) {
+.img_comment {
+    display: block;
+  }}
+
+.class_comentarios {
+    display: flex;
+    flex-direction: row; /* Cambia a column si prefieres apilar verticalmente */
+    align-items: center;
+    justify-content: start;
+    background-color: #f9f9f9;
+    border-radius: 20px;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+    width: 60%; /* O el ancho que prefieras */
+    margin: 10px auto; /* Centra el comentario y añade espacio entre ellos */
+    padding: 15px; /* Espacio dentro del comentario */
+    
+  }

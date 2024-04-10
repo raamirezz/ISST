@@ -7,7 +7,7 @@ import com.isst.demo.dto.ComentariosDTO;
 public interface ComentariosService {
 
     public ComentariosDTO crearComentario(ComentariosDTO ComentariosDTO);
-    public ComentariosDTO obtenerComentariosPorId(Long id);
     public List<ComentariosDTO> obtenerTodosLosComentarios();
+    public List<ComentariosDTO> obtenerComentariosPorTemaId(Long temaId);
     
 }
