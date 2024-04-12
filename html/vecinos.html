@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/vecinos.css">
+    
+    <title>Vecinos</title>
+    
+</head>
+<body>
+    <header>
+        <h1>Lista de Vecinos</h1>
+    </header>
+    <div class="container mt-5">
+        <div id="vecinos-list" class="row justify-content-center">
+            <!-- Aquí se mostrarán los vecinos -->
+            <div class="col-md-4 mb-4">
+                <div class="vecino">
+                    <h3>Nombre del Vecino</h3>
+                    <p>Apellido del Vecino</p>
+                    <p>DNI del Vecino</p>
+                    <p>Correo Electrónico</p>
+                    <div class="categoria">Vecino</div> <!-- Contenedor para la categoría -->
+                    <button class="presidente-btn">Hacer Presidente</button> <!-- Botón para hacer presidente -->
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    <div class="botones">
+        <button class="boton" onclick="window.location.href = 'ver_comunidades.html'">Volver</button>
+        <button class="boton" id="guardarCambiosBtn" onclick="guardarCambios()">Guardar Cambios</button>
+    </div>
+    <script src="../js/vecinos.js"></script>
+</body>
+</html>

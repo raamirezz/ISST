@@ -16,12 +16,16 @@ $(document).ready(function() {
             mensajeConfirmacion.show();
         }
     });
-});
 
+    // Maneja el clic en el botón de crear comunidad
+    $('#crear-comunidad-btn').click(function(event) {
+        // Evita que se recargue la página al hacer clic en el botón
+        event.preventDefault();
 
+        // Muestra una alerta al hacer clic en el botón
+        alert('¡Comunidad creada con éxito!');
+    });
 
-
-$(document).ready(function() {
     // Maneja el clic en el campo de código de la comunidad
     $('#codigo').click(function() {
         // Genera un código aleatorio de 9 dígitos
@@ -31,7 +35,3 @@ $(document).ready(function() {
         $(this).val(codigoAleatorio);
     });
 });
-
-
-
-

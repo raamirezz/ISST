@@ -1,0 +1,79 @@
+/* Header */
+header {
+    text-align: center;
+    padding: 20px;
+    background-color: #5f96d1; /* Color de fondo azulado */
+    color: white; /* Color del texto */
+    margin: 0;
+    border-radius: 5px;
+    font-family: Arial, sans-serif;
+}
+
+/* Estilo para la caja de vecinos */
+.vecino {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    position: relative; /* Para posicionar el botón de presidente */
+}
+
+/* Estilo para el contenedor de categoría */
+.categoria {
+    padding: 5px 10px; /* Espaciado interno */
+    border-radius: 5px; /* Bordes redondeados */
+    margin-top: 10px; /* Espaciado superior */
+    display: inline-block; /* Asegura que el div ocupe solo el espacio necesario */
+}
+
+/* Cambia el fondo del contenedor para vecinos */
+.vecino .categoria {
+    background-color: green; /* Fondo verde para vecinos */
+    color: white; /* Texto blanco */
+}
+
+/* Cambia el fondo del contenedor para el presidente */
+.presidente .categoria {
+    background-color: orange; /* Fondo naranja para presidente */
+    color: white; /* Texto blanco */
+}
+
+/* Estilo para el botón de presidente */
+.presidente-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: #007bff; /* Azul */
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Estilo adicional para el contenedor de categoría cuando es presidente */
+.presidente .categoria {
+    background-color: orange; /* Fondo naranja para presidente */
+    color: white; /* Texto blanco */
+}
+
+/* Estilo para los botones al final */
+.botones {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.boton {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+.boton:hover {
+    background-color: #0056b3;
+}
