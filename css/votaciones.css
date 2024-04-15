@@ -1,0 +1,75 @@
+/* Estilos para la sección de votaciones */
+
+.votaciones-header {
+    text-align: center;
+    padding: 20px;
+    background-color: #5f96d1; /* Color de fondo azulado */
+    color: white; /* Color del texto */
+    margin: 0;
+    border-radius: 5px;
+}
+
+.votaciones-title {
+    font-size: 36px;
+}
+
+.votaciones-main {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+}
+
+.profile-box {
+    color: white; 
+    position: absolute;
+    top: 5%;
+    right: 0px;
+    background-color: #5bb1d3; /* Color del cuadrado */
+    padding: 7px 49px;
+    border-radius: 7px; /* Bordes redondeados */
+}
+
+aside {
+    width: 200px;
+    background-color: #f2f2f2;
+    padding: 20px;
+    height: 100vh; 
+    margin: 0; 
+    border-radius: 13px;
+}
+
+.votaciones-link {
+    display: block;
+    text-decoration: none;
+    color: #333; /* Color del texto */
+    margin-bottom: 10px; /* Espacio entre enlaces */
+}
+
+.votaciones-link:hover {
+    background-color: #ddd;
+    border-radius: 10px;
+}
+
+.votaciones-titulos {
+    max-width: 100%; /* Cambia el ancho máximo según necesites */
+    margin: 0 auto; /* Centra el bloque horizontalmente */
+    text-align: center;
+    padding: 3%;
+    background-color: #5f96d1; /* Color de fondo azulado */
+    color: white; /* Color del texto */
+    border-radius: 10px;
+    font-family: Arial, sans-serif; /* Cambia el tipo de letra */
+}
+
+.votaciones-titulos img {
+    max-width: 100%; /* Ajusta el ancho máximo de la imagen */
+    height: auto; /* Mantén la proporción de la imagen */
+    border-radius: 15px;
+}
+
+#urbanizacion {
+    width: 1000px; /* Establece un ancho fijo para todas las imágenes */
+    height: 490px; /* Establece una altura fija para todas las imágenes */
+    object-fit: cover; /* Hace que las imágenes se ajusten manteniendo la relación de aspecto */
+    border-radius: 10px; /* Añade bordes redondeados a las imágenes */
+}
