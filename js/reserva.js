@@ -31,8 +31,19 @@ $(document).ready(function () {
   function confirmarReserva(instalacion, id) {
     var date = "#datepicker" + id;
     // Obtener la fecha y hora seleccionadas
-    var fechaSeleccionada = $("#datepicker" + id).val();
-    var horaSeleccionada = $("#selectHora" + id).val();
+    var fechaSeleccionada = $('#datepicker'+id).val();
+    var horaSeleccionada = $('#selectHora'+id).val();
+    console.log("Fecha seleccionada:", fechaSeleccionada);
+    console.log("Hora seleccionada:", horaSeleccionada);
+    // Mostrar un mensaje de alerta con los detalles de la reserva
+    alert(
+      "Fecha seleccionada para " +
+        instalacion +
+        ": " +
+        fechaSeleccionada +
+        " a las " +
+        horaSeleccionada
+    );
 
     // Datos de la reserva
     var data = {
@@ -166,7 +177,7 @@ $(document).ready(function () {
 
   // Asignar listeners a los botones de mantenimiento y disponibilidad
   $("#btnMantenimiento1").on("click", function () {
-    cambiarDisponibilidad("Padel", false); // Indicar que la pista de pádel no está disponible
+    cambiarDisponibilidad(1, false); // Indicar que la pista de pádel no está disponible
     alert("La pista de padel no esta disponible!");
     $("#btnMantenimiento1").hide();
     $("#btnDisponible1").show();
@@ -174,7 +185,7 @@ $(document).ready(function () {
   });
 
   $("#btnDisponible1").on("click", function () {
-    cambiarDisponibilidad("Padel", true); // Cambiar la disponibilidad de la pista de pádel a disponible
+    cambiarDisponibilidad(1, true); // Cambiar la disponibilidad de la pista de pádel a disponible
     alert("La pista de padel esta disponible!");
     $("#btnDisponible1").hide();
     $("#btnMantenimiento1").show();
@@ -183,7 +194,7 @@ $(document).ready(function () {
 
   // Asignar listeners a los botones de mantenimiento y disponibilidad para la instalación 2
   $("#btnMantenimiento2").on("click", function () {
-    cambiarDisponibilidad("GYM", false); // Indicar que el GYM no está disponible
+    cambiarDisponibilidad(2, false); // Indicar que el GYM no está disponible
     alert("El servicio está en mantenimiento");
     $("#btnMantenimiento2").hide();
     $("#btnDisponible2").show();
@@ -191,7 +202,7 @@ $(document).ready(function () {
   });
 
   $("#btnDisponible2").on("click", function () {
-    cambiarDisponibilidad("GYM", true); // Cambiar la disponibilidad del GYM a disponible
+    cambiarDisponibilidad(2, true); // Cambiar la disponibilidad del GYM a disponible
     alert("El gimnasio está disponible!");
     $("#btnDisponible2").hide();
     $("#btnMantenimiento2").show();
@@ -200,7 +211,7 @@ $(document).ready(function () {
 
   // Asignar listeners a los botones de mantenimiento y disponibilidad para la instalación 3
   $("#btnMantenimiento3").on("click", function () {
-    cambiarDisponibilidad("Piscina", false); // Indicar que la piscina no está disponible
+    cambiarDisponibilidad(3, false); // Indicar que la piscina no está disponible
     alert("El gimnasio no está disponible!");
     $("#btnMantenimiento3").hide();
     $("#btnDisponible3").show();
@@ -208,7 +219,7 @@ $(document).ready(function () {
   });
 
   $("#btnDisponible3").on("click", function () {
-    cambiarDisponibilidad("Piscina", true); // Cambiar la disponibilidad de la piscina a disponible
+    cambiarDisponibilidad(3, true); // Cambiar la disponibilidad de la piscina a disponible
     alert("La piscina ya está disponible!");
     $("#btnDisponible3").hide();
     $("#btnMantenimiento3").show();
@@ -217,7 +228,7 @@ $(document).ready(function () {
 
   // Asignar listeners a los botones de mantenimiento y disponibilidad para la instalación 4
   $("#btnMantenimiento4").on("click", function () {
-    cambiarDisponibilidad("Tenis", false); // Indicar que la pista de tenis no está disponible
+    cambiarDisponibilidad(4, false); // Indicar que la pista de tenis no está disponible
     alert("La pista de tenis no está disponible!");
     $("#btnMantenimiento4").hide();
     $("#btnDisponible4").show();
@@ -225,7 +236,7 @@ $(document).ready(function () {
   });
 
   $("#btnDisponible4").on("click", function () {
-    cambiarDisponibilidad("Tenis", true); // Cambiar la disponibilidad de la pista de tenis a disponible
+    cambiarDisponibilidad(4, true); // Cambiar la disponibilidad de la pista de tenis a disponible
     alert("La pista de tenis ya está disponible!");
     $("#btnDisponible4").hide();
     $("#btnMantenimiento4").show();
@@ -234,7 +245,7 @@ $(document).ready(function () {
 
   // Asignar listeners a los botones de mantenimiento y disponibilidad para la instalación 5
   $("#btnMantenimiento5").on("click", function () {
-    cambiarDisponibilidad("Eventos", false); // Indicar que la zona de eventos no está disponible
+    cambiarDisponibilidad(5, false); // Indicar que la zona de eventos no está disponible
     alert("La zona de eventos no está disponible!");
     $("#btnMantenimiento5").hide();
     $("#btnDisponible5").show();
@@ -242,7 +253,7 @@ $(document).ready(function () {
   });
 
   $("#btnDisponible5").on("click", function () {
-    cambiarDisponibilidad("Eventos", true); // Cambiar la disponibilidad de la zona de eventos a disponible
+    cambiarDisponibilidad(5, true); // Cambiar la disponibilidad de la zona de eventos a disponible
     alert("La zona de eventos ya está disponible!");
     $("#btnDisponible5").hide();
     $("#btnMantenimiento5").show();
