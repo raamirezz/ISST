@@ -26,6 +26,34 @@ $(document).ready(function() {
     });
 
     // Agrega un listener al botón "Confirmar" de cada tarjeta
+    $('.btn-confirmar').on('click', function() {
+        var fechaSeleccionada = $(this).siblings('input[type="text"]').val();
+        var horaSeleccionada = $(this).siblings('select').val();
+        var tipoInstalacion = $(this).closest('.card').find('.card-title').text();
+        var reservaData = {
+            fecha: fechaSeleccionada,
+            hora: horaSeleccionada,
+            tipoInstalacion: tipoInstalacion,
+            usuario: "nombreUsuario" // Aquí debes obtener el nombre de usuario del contexto de tu aplicación
+        };
+
+        // Enviar los datos al backend
+        $.ajax({
+            type: "POST",
+            url: "/api/reserva/crear",
+            contentType: "application/json",
+            data: JSON.stringify(reservaData),
+            success: function(response) {
+                // Manejar la respuesta del servidor si es necesario
+                alert(response);
+            },
+            error: function(xhr, status, error) {
+                // Manejar errores de la petición AJAX
+                console.error(xhr.responseText);
+            }
+        });
+    });
+    // Agrega un listener al botón "Confirmar" de cada tarjeta
     $('#btnConfirmar1').on('click', function() {
         var fechaSeleccionada = $('#datepicker1').val();
         var horaSeleccionada = $('#selectHora1').val();
