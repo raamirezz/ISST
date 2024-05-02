@@ -15,69 +15,68 @@ $(document).ready(function() {
             // Muestra el mensaje de confirmación si no está visible
             mensajeConfirmacion.show();
         }
+
+        // Toggle para activar la variable a true o false
+        var checkbox = $(this).find('input[type="checkbox"]');
+        checkbox.prop('checked', !checkbox.prop('checked'));
     });
 
-    // Maneja el clic en el botón de crear comunidad
-    $('#crear-comunidad-btn').click(function(event) {
-        // Evita que se recargue la página al hacer clic en el botón
-        event.preventDefault();
-
-        // Muestra una alerta al hacer clic en el botón
-        alert('¡Comunidad creada con éxito!');
-    });
-
-    // Maneja el clic en el campo de código de la comunidad
-    $('#codigo').click(function() {
+    // Maneja el clic en el campo de código de la comunidad para generar un código aleatorio
+    $('#community_code').click(function() {
         // Genera un código aleatorio de 9 dígitos
-        var codigoAleatorio = Math.floor(100000000 + Math.random() * 900000000);
+        var communityCode = Math.floor(100000000 + Math.random() * 900000000).toString();
         
         // Asigna el código aleatorio al campo de código de la comunidad
-        $(this).val(codigoAleatorio);
+        $(this).val(communityCode);
     });
-});
 
-$(document).ready(function() {
     // Selector para el botón de enviar el formulario
     $('#crear-comunidad-btn').on('click', function(e) {
         e.preventDefault(); // Evita el comportamiento predeterminado del botón
 
         // Obtener los valores de los campos del formulario
-        var codigo = $('#codigo').val();
+        var communityCode = $('#community_code').val();
         var calle = $('#calle').val();
         var provincia = $('#provincia').val();
-        var instalaciones = []; // Array para almacenar las instalaciones seleccionadas
-
-        // Recorrer todas las instalaciones seleccionadas
-        $('.instalacion-btn').each(function() {
-            if ($(this).hasClass('seleccionado')) { // Verificar si la instalación está seleccionada
-                instalaciones.push($(this).data('instalacion')); // Agregar la instalación al array
-            }
-        });
+        var hasPiscina = $('#piscina').is(':checked');
+        var hasTenis = $('#tenis').is(':checked');
+        var hasPadel = $('#padel').is(':checked');
+        var hasGym = $('#gym').is(':checked');
+        var hasLocalEventos = $('#local-eventos').is(':checked');
 
         // Objeto con los datos del formulario
         var formData = {
-            codigo: codigo,
             calle: calle,
+            community_code: communityCode,
+            has_gym: hasGym,
+            has_local_eventos: hasLocalEventos,
+            has_Padel: hasPadel,
+            has_Piscina: hasPiscina,
+            has_Tenis: hasTenis,
             provincia: provincia,
-            instalaciones: instalaciones
         };
+        
 
-        // Petición AJAX para enviar los datos del formulario al backend
-        $.ajax({
-            type: 'POST',
-            url: '/crear_comunidad', // Ruta del controlador en el backend
-            data: formData,
-            dataType: 'json',
-            encode: true
+        // Realizar la solicitud POST a la API
+        fetch('http://localhost:8080/api/comunidad/crear', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(formData)
         })
-        .done(function(data) {
-            // Manejar la respuesta del servidor si la petición fue exitosa
-            console.log(data); // Puedes mostrar mensajes de éxito o redireccionar a otra página
+        .then(response => {
+            if (response.ok) {
+                console.log(formData);
+                // Puedes agregar aquí cualquier acción adicional que desees después de crear la comunidad
+            } else {
+                console.error("Error al crear la comunidad.");
+                alert("Error al crear la comunidad. Por favor, inténtalo de nuevo.");
+            }
         })
-        .fail(function(data) {
-            // Manejar errores si la petición falla
-            console.log(data.responseText); // Mostrar mensajes de error
+        .catch(error => {
+            console.error("Error al realizar la solicitud:", error);
+            alert("Error al crear la comunidad. Por favor, inténtalo de nuevo.");
         });
     });
 });
-

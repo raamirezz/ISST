@@ -2,6 +2,8 @@ package com.isst.demo.service;
 
 import java.util.List;
 
+import com.isst.demo.dto.ComunidadDTO;
+
 public interface ComunidadService {
-    void guardarComunidad(int codigo, String calle, String provincia, List<String> instalaciones);
+    void guardarComunidad(ComunidadDTO comunidadDTO);
 }

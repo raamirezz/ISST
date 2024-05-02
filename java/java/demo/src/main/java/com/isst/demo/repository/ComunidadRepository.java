@@ -9,5 +9,6 @@ import com.isst.demo.entity.Comunidad;
 
 @Repository
 public interface ComunidadRepository extends CrudRepository<Comunidad, Long> {
-    List<Comunidad> findByCodigo(int codigo);
+    List<Comunidad> findByCommunityCode(String community_code);
+
 }
