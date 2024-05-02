@@ -1,31 +1,45 @@
 package com.isst.demo.dto;
 
+import java.util.Date;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class ReservaDTO {
 
-    private String fecha;
-    private String hora;
-    private String tipoInstalacion;
-    private String usuario;
+    private Long id;
     private boolean disponible;
+    private Date fecha;
+    private String hora;
+    private String tipo_instalacion;
+    private String usuario;
 
-    // Constructores, getters y setters
-
+    // Constructor
     public ReservaDTO() {
     }
 
-    public ReservaDTO(String fecha, String hora, String tipoInstalacion, String usuario, boolean disponible) {
-        this.fecha = fecha;
-        this.hora = hora;
-        this.tipoInstalacion = tipoInstalacion;
-        this.usuario = usuario;
+    // Getters y setters
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public boolean isDisponible() {
+        return disponible;
+    }
+
+    public void setDisponible(boolean disponible) {
         this.disponible = disponible;
     }
 
-    public String getFecha() {
+    public Date getFecha() {
         return fecha;
     }
 
-    public void setFecha(String fecha) {
+    public void setFecha(Date fecha) {
         this.fecha = fecha;
     }
 
@@ -36,13 +50,13 @@ public class ReservaDTO {
     public void setHora(String hora) {
         this.hora = hora;
     }
-
+    @JsonProperty("tipo_instalacion")
     public String getTipoInstalacion() {
-        return tipoInstalacion;
+        return tipo_instalacion;
     }
 
-    public void setTipoInstalacion(String tipoInstalacion) {
-        this.tipoInstalacion = tipoInstalacion;
+    public void setTipoInstalacion(String tipo_instalacion) {
+        this.tipo_instalacion = tipo_instalacion;
     }
 
     public String getUsuario() {
@@ -51,13 +65,5 @@ public class ReservaDTO {
 
     public void setUsuario(String usuario) {
         this.usuario = usuario;
-    }
-
-    public boolean isDisponible() {
-        return disponible;
-    }
-
-    public void setDisponible(boolean disponible) {
-        this.disponible = disponible;
     }
 }

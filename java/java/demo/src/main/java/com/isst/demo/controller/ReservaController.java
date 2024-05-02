@@ -19,14 +19,14 @@ public class ReservaController {
     @Autowired
     private ReservaService reservaService;
 
+    // Maneja las solicitudes POST para crear una nueva reserva
     @PostMapping("/crear")
     public String crearReserva(@RequestBody ReservaDTO reservaDTO) {
-        // Aquí puedes procesar los datos de la reserva y guardarlos en la base de datos
         reservaService.crearReserva(reservaDTO);
-        // Devuelve un mensaje indicando que la reserva fue creada con éxito
         return "Reserva creada exitosamente";
     }
     
+    // Maneja las solicitudes PUT para actualizar la disponibilidad de una reserva existente
     @PutMapping("/actualizarDisponibilidad")
     public String actualizarDisponibilidad(@RequestBody ReservaDTO reservaDTO) {
         reservaService.actualizarDisponibilidad(reservaDTO);

@@ -1,36 +1,33 @@
 package com.isst.demo.entity;
 
-import java.time.LocalDateTime;
-import java.util.List;
+import java.util.Date;
 
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.PrePersist;
 import jakarta.persistence.Table;;
 
 @Entity
+@Table(name = "reserva")
 public class Reserva {
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    
-    private String fecha;
-    private String hora;
-    private String tipoInstalacion;
-    private String usuario;
+
     private boolean disponible;
+    private Date fecha;
+    private String hora;
+    private String tipo_instalacion;
+    private String usuario;
 
     // Constructor
     public Reserva() {
     }
 
-    // Getters y Setters
+    // Getters y setters
+
     public Long getId() {
         return id;
     }
@@ -39,11 +36,19 @@ public class Reserva {
         this.id = id;
     }
 
-    public String getFecha() {
+    public boolean isDisponible() {
+        return disponible;
+    }
+
+    public void setDisponible(boolean disponible) {
+        this.disponible = disponible;
+    }
+
+    public Date getFecha() {
         return fecha;
     }
 
-    public void setFecha(String fecha) {
+    public void setFecha(Date fecha) {
         this.fecha = fecha;
     }
 
@@ -56,11 +61,11 @@ public class Reserva {
     }
 
     public String getTipoInstalacion() {
-        return tipoInstalacion;
+        return tipo_instalacion;
     }
 
-    public void setTipoInstalacion(String tipoInstalacion) {
-        this.tipoInstalacion = tipoInstalacion;
+    public void setTipoInstalacion(String tipo_instalacion) {
+        this.tipo_instalacion = tipo_instalacion;
     }
 
     public String getUsuario() {
@@ -69,12 +74,5 @@ public class Reserva {
 
     public void setUsuario(String usuario) {
         this.usuario = usuario;
-    }
-    public boolean isDisponible() {
-        return disponible;
-    }
-
-    public void setDisponible(boolean disponible) {
-        this.disponible = disponible;
     }
 }
