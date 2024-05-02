@@ -12,4 +12,9 @@ public class ReservaService {
         // Aquí iría la lógica para guardar la reserva en la base de datos
         // Por ejemplo, llamar a un repositorio de Spring Data JPA para guardar la reserva en la base de datos
     }
+    public void actualizarDisponibilidad(ReservaDTO reservaDTO) {
+        // Aquí iría la lógica para guardar la reserva en la base de datos
+        // Por ejemplo, llamar a un repositorio de Spring Data JPA para guardar la reserva en la base de datos
+    }
+
 }

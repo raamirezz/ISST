@@ -6,17 +6,19 @@ public class ReservaDTO {
     private String hora;
     private String tipoInstalacion;
     private String usuario;
+    private boolean disponible;
 
     // Constructores, getters y setters
 
     public ReservaDTO() {
     }
 
-    public ReservaDTO(String fecha, String hora, String tipoInstalacion, String usuario) {
+    public ReservaDTO(String fecha, String hora, String tipoInstalacion, String usuario, boolean disponible) {
         this.fecha = fecha;
         this.hora = hora;
         this.tipoInstalacion = tipoInstalacion;
         this.usuario = usuario;
+        this.disponible = disponible;
     }
 
     public String getFecha() {
@@ -49,5 +51,13 @@ public class ReservaDTO {
 
     public void setUsuario(String usuario) {
         this.usuario = usuario;
+    }
+
+    public boolean isDisponible() {
+        return disponible;
+    }
+
+    public void setDisponible(boolean disponible) {
+        this.disponible = disponible;
     }
 }
