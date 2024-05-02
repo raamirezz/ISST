@@ -6,9 +6,7 @@
     <title>Crear Comunidad</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="../css/crear_comunidad.css">
-
 </head>
-
 <body>
     <header>
         <h1>Panel de creación de comunidad</h1>
@@ -21,7 +19,7 @@
                         <h5 class="card-title">Introduce los datos de la comunidad</h5>
                     </div>
                     <div class="card-body">
-                        <form action="procesar_datos.php" method="POST">
+                        <form action="/crear_comunidad" method="POST">
                             <div class="form-group">
                                 <label for="codigo">Código de Comunidad:</label>
                                 <input type="text" class="form-control" id="codigo" name="codigo" readonly>
@@ -78,10 +76,11 @@
                                                 </div>
                                             </a>
                                         </div>
+                                        <!-- Agrega aquí más instalaciones si es necesario -->
                                     </div>
                                 </div>
                             </div>
-                            <button id="crear-comunidad-btn"  "submit" class="btn btn-primary">Crear Comunidad</button>
+                            <button id="crear-comunidad-btn" type="submit" class="btn btn-primary">Crear Comunidad</button>
                             <a href="panel_admin.html" class="btn btn-secondary ml-2">Volver</a>
                         </form>
                     </div>

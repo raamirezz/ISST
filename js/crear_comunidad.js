@@ -35,3 +35,49 @@ $(document).ready(function() {
         $(this).val(codigoAleatorio);
     });
 });
+
+$(document).ready(function() {
+    // Selector para el botón de enviar el formulario
+    $('#crear-comunidad-btn').on('click', function(e) {
+        e.preventDefault(); // Evita el comportamiento predeterminado del botón
+
+        // Obtener los valores de los campos del formulario
+        var codigo = $('#codigo').val();
+        var calle = $('#calle').val();
+        var provincia = $('#provincia').val();
+        var instalaciones = []; // Array para almacenar las instalaciones seleccionadas
+
+        // Recorrer todas las instalaciones seleccionadas
+        $('.instalacion-btn').each(function() {
+            if ($(this).hasClass('seleccionado')) { // Verificar si la instalación está seleccionada
+                instalaciones.push($(this).data('instalacion')); // Agregar la instalación al array
+            }
+        });
+
+        // Objeto con los datos del formulario
+        var formData = {
+            codigo: codigo,
+            calle: calle,
+            provincia: provincia,
+            instalaciones: instalaciones
+        };
+
+        // Petición AJAX para enviar los datos del formulario al backend
+        $.ajax({
+            type: 'POST',
+            url: '/crear_comunidad', // Ruta del controlador en el backend
+            data: formData,
+            dataType: 'json',
+            encode: true
+        })
+        .done(function(data) {
+            // Manejar la respuesta del servidor si la petición fue exitosa
+            console.log(data); // Puedes mostrar mensajes de éxito o redireccionar a otra página
+        })
+        .fail(function(data) {
+            // Manejar errores si la petición falla
+            console.log(data.responseText); // Mostrar mensajes de error
+        });
+    });
+});
+
