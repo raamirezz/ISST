@@ -7,7 +7,6 @@ import com.isst.demo.entity.Registro;
 
 public interface RegistroService {
 
-    public void crearRegistroFormulario (RegistroDTO registroDTO);
-    public Registro consultarRegistro();
-    
+    public void crearRegistroFormulario(RegistroDTO registroDTO);
+    public Registro consultarRegistroPorId(Long id); 
 }

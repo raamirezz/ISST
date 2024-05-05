@@ -26,8 +26,9 @@ public class RegistroServiceImpl implements RegistroService{
         registroRepository.save(registroEntity);
     }
 
-    public Registro consultarRegistro(){
-        return registroRepository.findById(3L).get();
+    public Registro consultarRegistroPorId(Long id){
+        return registroRepository.findById(id).orElse(null);
     }
+    
     
 }

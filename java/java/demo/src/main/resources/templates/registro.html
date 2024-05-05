@@ -1,12 +1,86 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registro</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="../static/css/registro.css"> <!-- Enlaza tu archivo CSS aquí si lo tienes -->
+    <style>
+        /* Estilos generales */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 0;
+            background-image: url('../static/Content/arboles.jpeg');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .registration-container {
+            width: 300px;
+            margin: 100px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            margin-right: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        input[type="password"],
+        select {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            margin-bottom: 20px;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        #portal-piso-letra {
+            display: none;
+            /* Oculta estos campos por defecto */
+        }
+
+        .full-width {
+            width: 100%;
+            /* Establece el ancho al 100% */
+        }
+    </style>
 </head>
+
 <body>
     <div class="registration-container">
         <h2>Registro</h2>
@@ -44,12 +118,13 @@
                 <small id="community-code-help"></small> <!-- Mensaje de ayuda para el código de comunidad -->
             </div>
 
-            <button type="button" id="register-button">Registrarse</button> <!-- Cambiado el tipo de botón a "button" y añadido el evento onclick -->
+            <button type="button" id="register-button">Registrarse</button>
+            <!-- Cambiado el tipo de botón a "button" y añadido el evento onclick -->
         </form>
     </div>
     <!-- Incluye tu archivo JavaScript aquí -->
     <script>
-        document.getElementById('register-button').addEventListener('click', function() {
+        document.getElementById('register-button').addEventListener('click', function () {
             var usuario = document.getElementById('usuario').value;
             var contraseña = document.getElementById('contraseña').value;
             var confirmarContraseña = document.getElementById('confirmar-contraseña').value;
@@ -86,20 +161,21 @@
                 },
                 body: JSON.stringify(data)
             })
-            .then(response => {
-                if (response.ok) {
-                    console.log("Datos guardados con éxito.");
-                    window.location.href = '/registro_exitoso';
-                } else {
-                    console.error("Error al guardar los datos.");
+                .then(response => {
+                    if (response.ok) {
+                        console.log("Datos guardados con éxito.");
+                        window.location.href = '/registro_exitoso';
+                    } else {
+                        console.error("Error al guardar los datos.");
+                        alert("Error al registrar. Por favor, inténtalo de nuevo.");
+                    }
+                })
+                .catch(error => {
+                    console.error("Error al realizar la solicitud:", error);
                     alert("Error al registrar. Por favor, inténtalo de nuevo.");
-                }
-            })
-            .catch(error => {
-                console.error("Error al realizar la solicitud:", error);
-                alert("Error al registrar. Por favor, inténtalo de nuevo.");
-            });
+                });
         });
     </script>
 </body>
+
 </html>
