@@ -1,11 +1,12 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Votaciones</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../static/css/base.css">
+    
 </head>
 
 <body>
@@ -42,19 +43,16 @@
                     <div id="votaciones">
                         <!-- Formulario para crear una nueva votación -->
                         <h2 class="titulos">Nueva Votación</h2>
-                        <section class="left">
-                            
-                            <button id="formNuevaVotacion">Añadir Tema</button>
-                            <div class="inner-left">
+     
+                            <div id="nuevaVotacionForm">
+                                <input type="text" id="pregunta" placeholder="Pregunta" class="form-control mb-2">
+                                <textarea id="descripcion" placeholder="Descripción" class="form-control mb-2"></textarea>
+                                <button id="btnCrearVotacion" class="btn btn-success">Crear Votación</button>
                             </div>
-                          </section>
-                        <div id="addTopicForm" style="display:none;">
-                            <input type="text" id="pregunta" placeholder="Pregunta">
-                            <textarea id="opciones" placeholder="Opciones (separadas por coma)"></textarea>
-                            <button onclick="crearVotacion()">Crear Votación</button>
-                        </div>
+                        </section>
+                        
                         <!-- Listado de votaciones existentes -->
-                        <h2 class="titulos">Votaciones Actuales</h2>
+                        <h2 class="titulos mt-5">Votaciones Actuales</h2>
                         <div id="listaVotaciones">
                             <!-- Aquí se cargarán las votaciones existentes -->
                         </div>
@@ -63,6 +61,6 @@
             </div>
         </div>
     </main>
-    <script src="../js/votaciones.js"></script>
+    <script src="../static/js/votaciones.js"></script>
 </body>
 </html>
