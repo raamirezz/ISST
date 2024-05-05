@@ -86,6 +86,16 @@ import com.isst.demo.service.TemaService;
             return "registro";
         }
 
+        @GetMapping("/panel_admin")
+        public String panel_admin() {
+            return "panel_admin";
+        }
+
+        @GetMapping("/ver_comunidades")
+        public String ver_comunidades() {
+            return "ver_comunidades";
+        }
+
         @GetMapping("/temaForo")
         public String getTemaForo(@RequestParam("id") Long id, Model model) {
             try {

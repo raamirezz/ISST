@@ -50,6 +50,8 @@ public class SecurityConfig {
             .authorizeHttpRequests(auth -> auth
                 .requestMatchers("/").permitAll()
                 .requestMatchers("/registro").permitAll()
+                .requestMatchers("/contacto").permitAll()
+                .requestMatchers("/contacto_exitoso").permitAll()
                 .requestMatchers("/api/registro/**").permitAll()
                 .requestMatchers("/admin").hasAuthority("ROLE_ADMIN")
                 .requestMatchers("/vecinos").hasAuthority("ROLE_VECINOS")
