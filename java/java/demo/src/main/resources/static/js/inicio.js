@@ -1,9 +1,9 @@
 // Lista de las imágenes de las urbanizaciones
 var imagenesUrbanizaciones = [
-    "../content/Urbanización1.jpeg",
-    "../content/Urbanización2.jpeg",
-    "../content/Urbanización3.jpg",
-    "../content/Urbanización4.jpg"
+    "../static/Content/Urbanización1.jpeg",
+    "../static/Content/Urbanización2.jpeg",
+    "../static/Content/Urbanización3.jpg",
+    "../static/Content/Urbanización4.jpg"
 ];
 
 // Función para cambiar la imagen cada 5 segundos
