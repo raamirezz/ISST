@@ -1,6 +1,11 @@
 package com.isst.demo.controller;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -32,15 +37,18 @@ public class RegistroController {
 
     // Maneja las solicitudes POST desde el formulario de registro
     @PostMapping("/registro")
-    public String procesarRegistro(@RequestBody RegistroDTO registroDTO) {
-        
-        // Procesa los datos del formulario de registro (por ejemplo, guardar en la base de datos)
-        // Aquí puedes agregar la lógica para procesar los datos del registro
-        
+public ResponseEntity<RegistroDTO> procesarRegistro(@RequestBody RegistroDTO registroDTO) {
+    try {
         registroService.crearRegistroFormulario(registroDTO);
-        // Redirige a la página de inicio después de procesar el registro
-        return "redirect:/"; // Puedes redirigir a la página que desees
+        return ResponseEntity.ok(registroDTO);
+    } catch (Exception e) {
+        // Loguear el error para depuración
+        Logger.getLogger(RegistroController.class.getName()).log(Level.SEVERE, "Error al procesar registro", e);
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
     }
+}
+
+
 
 
 }

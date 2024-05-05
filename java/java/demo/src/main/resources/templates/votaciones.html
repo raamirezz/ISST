@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Votaciones</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/base.css">
+</head>
+
+<body>
+    <div class="fixed-top-right">
+        <a href="perfil.html" class="btn btn-primary">Perfil</a>
+    </div>
+    <header>
+        <h1>Bienvenido a TuComunidad</h1>
+    </header>
+
+    <main>
+        <aside>
+            <a href="foro.html">
+                <h2 class="asideLetras">Foro</h2>
+            </a>
+            <a href="votaciones.html">
+                <h2 class="asideLetras">Votaciones</h2>
+            </a>
+            <a href="reserva.html">
+                <h2 class="asideLetras">Reserva</h2>
+            </a>
+            <a href="#reuniones">
+                <h2 class="asideLetras">Reuniones</h2>
+            </a>
+        </aside>
+
+        <!-- Contenido de la sección de votaciones -->
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3">
+                    <!-- Espacio vacío para alinear con los otros elementos -->
+                </div>
+                <div class="col-md-6">
+                    <div id="votaciones">
+                        <!-- Formulario para crear una nueva votación -->
+                        <h2 class="titulos">Nueva Votación</h2>
+                        <section class="left">
+                            
+                            <button id="formNuevaVotacion">Añadir Tema</button>
+                            <div class="inner-left">
+                            </div>
+                          </section>
+                        <div id="addTopicForm" style="display:none;">
+                            <input type="text" id="pregunta" placeholder="Pregunta">
+                            <textarea id="opciones" placeholder="Opciones (separadas por coma)"></textarea>
+                            <button onclick="crearVotacion()">Crear Votación</button>
+                        </div>
+                        <!-- Listado de votaciones existentes -->
+                        <h2 class="titulos">Votaciones Actuales</h2>
+                        <div id="listaVotaciones">
+                            <!-- Aquí se cargarán las votaciones existentes -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script src="../js/votaciones.js"></script>
+</body>
+</html>

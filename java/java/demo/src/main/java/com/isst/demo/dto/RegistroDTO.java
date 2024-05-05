@@ -11,42 +11,50 @@ public class RegistroDTO {
     private String nombre;
     private String apellidos;
     private String email;
+    private String authority;
     private Long communityCode;
     private String usuario;
     private String contraseña;
+    private Boolean enabled;
 
     // Constructor vacío (obligatorio para JPA)
     public RegistroDTO() {
     }
 
     // Constructor con todos los campos
-    public RegistroDTO(Long id, String nombre, String apellidos, String email, Long communityCode, String usuario, String contraseña) {
+    public RegistroDTO(Long id, String nombre, String apellidos, String email, String authority, Long communityCode, String usuario, String contraseña, Boolean enabled) {
         this.id = id;
         this.nombre = nombre;
         this.apellidos = apellidos;
         this.email = email;
+        this.authority = authority;
         this.communityCode = communityCode;
         this.usuario = usuario;
         this.contraseña = contraseña;
+        this.enabled = enabled;
     }
 
     // Constructor sin ID
-    public RegistroDTO(String nombre, String apellidos, String email, Long communityCode, String usuario, String contraseña) {
+    public RegistroDTO(String nombre, String apellidos, String email, String authority, Long communityCode, String usuario, String contraseña, Boolean enabled) {
         this.nombre = nombre;
         this.apellidos = apellidos;
         this.email = email;
+        this.authority = authority;
         this.communityCode = communityCode;
         this.usuario = usuario;
         this.contraseña = contraseña;
+        this.enabled = enabled;
     }
 
     // Constructor sin apellidos y communityCode
-    public RegistroDTO(Long id, String nombre, String email, String usuario, String contraseña) {
+    public RegistroDTO(Long id, String nombre, String email, String authority, String usuario, String contraseña, Boolean enabled) {
         this.id = id;
         this.nombre = nombre;
         this.email = email;
+        this.authority = authority;
         this.usuario = usuario;
         this.contraseña = contraseña;
+        this.enabled = enabled;
     }
 
     // Getters y setters
@@ -83,6 +91,14 @@ public class RegistroDTO {
         this.email = email;
     }
 
+    public String getAuthority() {
+        return authority;
+    }
+
+    public void setAuthority(String authority) {
+        this.authority = authority;
+    }
+
     public Long getCommunityCode() {
         return communityCode;
     }
@@ -107,6 +123,14 @@ public class RegistroDTO {
         this.contraseña = contraseña;
     }
 
+    public Boolean getEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(Boolean enabled) {
+        this.enabled = enabled;
+    }
+
     // Método toString()
 
     @Override
@@ -116,9 +140,11 @@ public class RegistroDTO {
                 ", nombre='" + nombre + '\'' +
                 ", apellidos='" + apellidos + '\'' +
                 ", email='" + email + '\'' +
+                ", authority='" + authority + '\'' +
                 ", communityCode=" + communityCode +
                 ", usuario='" + usuario + '\'' +
                 ", contraseña='" + contraseña + '\'' +
+                ", enabled='" + enabled + '\'' +
                 '}';
     }
 }

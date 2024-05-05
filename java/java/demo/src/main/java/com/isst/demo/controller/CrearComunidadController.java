@@ -1,5 +1,7 @@
 package com.isst.demo.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -7,11 +9,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import java.util.List;
-
-import com.isst.demo.dto.ComunidadDTO;
-import com.isst.demo.entity.Comunidad;
-import com.isst.demo.repository.ComunidadRepository;
 import com.isst.demo.service.ComunidadService;
 
 @Controller
@@ -33,18 +30,18 @@ public class CrearComunidadController {
             @RequestParam List<String> instalaciones,
             Model model) {
         // Crear una nueva instancia de ComunidadDTO y asignar los valores
-        ComunidadDTO comunidadDTO = new ComunidadDTO(codigo, calle, provincia, instalaciones);
+        //ERROR ComunidadDTO comunidadDTO = new ComunidadDTO(codigo, calle, provincia, instalaciones);
 
         // Convertir ComunidadDTO a los parámetros esperados por el método
         // guardarComunidad
-        int codigoComunidad = comunidadDTO.getCodigo();
-        String calleComunidad = comunidadDTO.getCalle();
-        String provinciaComunidad = comunidadDTO.getProvincia();
-        List<String> instalacionesComunidad = comunidadDTO.getInstalaciones();
+        // int codigoComunidad = comunidadDTO.getCodigo();
+        // String calleComunidad = comunidadDTO.getCalle();
+        // String provinciaComunidad = comunidadDTO.getProvincia();
+        // List<String> instalacionesComunidad = comunidadDTO.getInstalaciones();
 
         // Llamar al método guardarComunidad del servicio para guardar la comunidad en
         // la base de datos
-        comunidadService.guardarComunidad(codigoComunidad, calleComunidad, provinciaComunidad, instalacionesComunidad);
+        // comunidadService.guardarComunidad(codigoComunidad, calleComunidad, provinciaComunidad, instalacionesComunidad);
 
         // Por ahora, simplemente mostraremos un mensaje de éxito
         model.addAttribute("mensaje", "¡Comunidad creada exitosamente!");

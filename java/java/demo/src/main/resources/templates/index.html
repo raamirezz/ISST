@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TuComunidad</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/inicio.css">
+    <script src="/js/inicio.js"></script>
+    <link rel="stylesheet" href="/css/portada.css">
+    <script src="portada.js"></script>
+</head>
+<body>
+    <div th:unless="${#authorization.expression('isAuthenticated()')}">
+        <div class="jumbotron jumbotron-fluid bg-primary text-white">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 text-center">
+                        <h1 class="display-4">TuComunidad</h1>
+                        <p class="lead">Mejoramos tu comunidad</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12 text-center">
+                        <img src="../content/LogoTuComunidad.png" alt="Urbanización1" class="img-fluid-logo"
+                            style="max-width: 100%; height: 200px;">
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 text-center">
+                    <h2>Foro</h2>
+                    <p>Interactúa con otros miembros de tu comunidad!</p>
+                    <img src="../content/foro_icon.png" alt="Foro" class="img-fluid">
+                </div>
+                <div class="col-md-6 text-center">
+                    <h2>Votaciones</h2>
+                    <p>Participa en las decisiones importantes de tu comunidad!</p>
+                    <img src="../content/votacion_icon.png" alt="Votaciones" class="img-fluid">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 text-center">
+                    <h2>Reserva</h2>
+                    <p>Reserva las instalaciones de tu comunidad para eventos y otras necesidades!</p>
+                    <img src="../content/reserva_icon.png" alt="Reserva" class="img-fluid">
+                </div>
+                <div class="col-md-6 text-center">
+                    <h2>Reuniones</h2>
+                    <p>Asiste a las reuniones para contribuir en la toma de decisiones importantes para tu comunidad!</p>
+                    <img src="../content/reunion_icon.png" alt="Reuniones" class="img-fluid">
+                </div>
+    
+            </div>
+            <div class="row">
+                <div class="col text-center">
+                    <div class="titulos">
+                        <h2>¿Nos dejas ayudarte?</h2>
+                        <h3>Mejoraremos tu comunidad</h3>
+                        <div>
+                            <img src="../content/Urbanización1.jpeg" alt="Urbanización1" class="img-fluid2">
+    
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+        <div class="fixed-top mr-3 mt-3">
+            <a href="/registro" class="btn btn-light float-right">Registro</a>
+            <a href="/login" class="btn btn-light mr-2 float-right">Iniciar sesión</a>
+        </div>
+    
+        <footer>
+            <div class="container">
+                <a href="/contacto" class="text-white">Contáctanos</a>
+            </div>
+        </footer>
+    
+    </body>
+    </div>
+
+
+    <div th:if="${#authorization.expression('isAuthenticated()')}">
+        <div>
+        <h1>Bienvenido <span th:text="${#authentication.name}">Usuario</span> a TuComunidad</h1>
+        
+        <p>
+            <a href="/logout">Logout</a>
+        </p>
+    </div>
+    <aside>
+        <a href="/foro">
+            <h2 class="asideLetras">Foro</h2>
+        </a>
+        <a href="/votaciones">
+            <h2 class="asideLetras">Votaciones</h2>
+        </a>
+        <a href="/reserva">
+            <h2 class="asideLetras">Reserva</h2>
+        </a>
+        <a href="#reuniones">
+            <h2 class="asideLetras">Reuniones</h2>
+        </a>
+    </aside>
+
+
+
+    </div>
+</body>
+</html>

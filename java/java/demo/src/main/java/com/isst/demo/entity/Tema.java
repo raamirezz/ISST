@@ -23,7 +23,7 @@ public class Tema {
     private String titulo;
     private String descripcion;
     private LocalDateTime fechaCreacion;
-    private Boolean isImportant;
+    private Boolean isImportant = false;
 
     // Relación de uno a muchos: Un tema puede tener muchos comentarios
     @OneToMany(mappedBy = "tema", cascade = CascadeType.ALL, fetch = FetchType.LAZY)

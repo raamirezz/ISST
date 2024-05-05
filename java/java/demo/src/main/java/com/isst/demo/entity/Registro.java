@@ -18,9 +18,11 @@ public class Registro {
     private String nombre;
     private String apellidos;
     private String email;
+    private String authority;
     private Long communityCode;
     private String usuario;
     private String contraseña;
+    private Boolean enabled = true;
 
     // Constructores
 
@@ -29,23 +31,27 @@ public class Registro {
     }
 
     // Constructor con todos los campos
-    public Registro(Long id, String nombre, String apellidos, String email, Long communityCode, String usuario, String contraseña) {
+    public Registro(Long id, String nombre, String apellidos, String email, String authority, Long communityCode, String usuario, String contraseña, Boolean enabled) {
         this.id = id;
         this.nombre = nombre;
         this.apellidos = apellidos;
         this.email = email;
+        this.authority = authority;
         this.communityCode = communityCode;
         this.usuario = usuario;
         this.contraseña = contraseña;
+        this.enabled = enabled;
     }
 
     public Registro(RegistroDTO registroDTO) {
         this.nombre = registroDTO.getNombre();
         this.apellidos = registroDTO.getApellidos();
         this.email = registroDTO.getEmail();
+        this.authority = registroDTO.getAuthority();
         this.communityCode = registroDTO.getCommunityCode();
         this.usuario = registroDTO.getUsuario();
         this.contraseña = registroDTO.getContraseña();
+        this.enabled = enabled;
     }
 
     // Getters y setters
@@ -82,6 +88,14 @@ public class Registro {
         this.email = email;
     }
 
+    public String getAuthority() {
+        return authority;
+    }
+
+    public void setAuthority(String authority) {
+        this.authority = authority;
+    }
+
     public Long getCommunityCode() {
         return communityCode;
     }
@@ -106,6 +120,13 @@ public class Registro {
         this.contraseña = contraseña;
     }
 
+    public Boolean getEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(Boolean enabled) {
+        this.enabled = enabled;
+    }
     // Método toString()
 
     @Override
@@ -115,9 +136,11 @@ public class Registro {
                 ", nombre='" + nombre + '\'' +
                 ", apellidos='" + apellidos + '\'' +
                 ", email='" + email + '\'' +
+                ", authority='" + authority + '\'' +
                 ", communityCode=" + communityCode +
                 ", usuario='" + usuario + '\'' +
                 ", contraseña='" + contraseña + '\'' +
+                ", enabled='" + enabled + '\'' +
                 '}';
     }
 }
