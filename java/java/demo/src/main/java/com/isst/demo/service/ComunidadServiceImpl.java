@@ -1,5 +1,8 @@
 package com.isst.demo.service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.isst.demo.dto.ComunidadDTO;
@@ -23,4 +26,13 @@ public class ComunidadServiceImpl implements ComunidadService {
 
         comunidadRepository.save(comunidad);
     }
+
+    @Override
+    public List<Comunidad> obtenerTodasLasComunidades() {
+        Iterable<Comunidad> iterable = comunidadRepository.findAll();
+        List<Comunidad> comunidades = new ArrayList<>();
+        iterable.forEach(comunidades::add);
+        return comunidades;
+    }
+
 }

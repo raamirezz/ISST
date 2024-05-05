@@ -2,6 +2,8 @@ package com.isst.demo.dto;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class ComunidadDTO {
 
     private String community_code;
@@ -30,7 +32,7 @@ public class ComunidadDTO {
         this.hasGym = hasGym;
         this.hasLocalEventos = hasLocalEventos;
     }
-
+    @JsonProperty("community_code")
     public String getCommunityCode() {
         return community_code;
     }
