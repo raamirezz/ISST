@@ -10,9 +10,38 @@
 </head>
 
 <body class="d-flex flex-column min-vh-100">
-    <header id="header-container">
-        <div class="container">
-            <h1 class="text-center">Panel de Administrador</h1>
+    <link rel="stylesheet" href="/css/foro.css">
+    <link rel="stylesheet" href="/css/portada.css">
+    <header class="header" id="header">
+        <div class="row">
+            <div class="container">
+                <div class="header-content">
+                    <div class="logo">
+                        <a href="/">
+                            <h2 id="inicio">INICIO</h2>
+                        </a>
+                    </div>
+                    <div class="nav-search">
+                        <h1 class="header_text" id="header_text">Panel de Administrador</h1>
+                    </div>
+                    <div class="nav-group">
+                        <ul>
+                            <li class="join">
+                                <a href="/perfil">
+                                    <i class="fa-solid fa-user"></i>
+                                    <span>Perfil</span>
+                                </a>
+
+                            </li>
+                            <li>
+                                <a href="/logout">
+                                    <span>Logout</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
         </div>
     </header>
 
