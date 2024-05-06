@@ -1,16 +1,98 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TuComunidad</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/css/inicio.css">
+    <!-- <link rel="stylesheet" href="/css/inicio.css"> -->
     <script src="/js/inicio.js"></script>
-    <link rel="stylesheet" href="/css/portada.css">
-    <link rel="stylesheet" href="/css/foro.css">
+    <!-- <link rel="stylesheet" href="/css/portada.css">
+    <link rel="stylesheet" href="/css/foro.css"> -->
     <script src="portada.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        .jumbotron {
+            padding: 4rem 2rem;
+        }
+
+        .btn-primary {
+            background-color: #007bff;
+            border-color: #007bff;
+        }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+            border-color: #0056b3;
+        }
+
+        .col-md-6 {
+            margin-bottom: 30px;
+        }
+
+        h2 {
+            margin-bottom: 1.5rem;
+        }
+
+        p {
+            margin-bottom: 1.5rem;
+        }
+
+        .img-fluid-logo {
+            border-radius: 100%;
+        }
+
+        .img-fluid {
+            max-width: 150px;
+            /* Ajusta el tamaño máximo del ancho */
+            height: auto;
+            /* Mantiene la proporción de aspecto */
+        }
+
+        .img-fluid2 {
+            max-width: 500px;
+            /* Ajusta el tamaño máximo del ancho */
+            height: auto;
+            /* Mantiene la proporción de aspecto */
+            border-radius: 3%;
+        }
+
+        body {
+            margin-bottom: 80px;
+            /* Añade un margen inferior */
+        }
+
+        /* Estilo adicional para el footer */
+        footer {
+            position: fixed;
+            /* Fija la posición del footer */
+            bottom: 0;
+            /* Lo coloca en la parte inferior */
+            width: 100%;
+            /* Ajusta el ancho al 100% */
+            background-color: #007bff;
+            /* Color de fondo azul */
+            color: white;
+            /* Color del texto blanco */
+            padding: 10px 0;
+            /* Añade espacio interno */
+            text-align: center;
+            /* Centra el contenido */
+        }
+
+        h2 {
+            font-weight: bold;
+            /* Negrita */
+            text-decoration: underline;
+            /* Subrayado */
+        }
+    </style>
 </head>
+
 <body>
     <div th:unless="${#authorization.expression('isAuthenticated()')}">
         <div class="jumbotron jumbotron-fluid bg-primary text-white">
@@ -23,13 +105,13 @@
                 </div>
                 <div class="row">
                     <div class="col-md-12 text-center">
-                        <img src="../Content/LogoTuComunidad.png" alt="Urbanización1" class="img-fluid-logo"
+                        <img src="../content/LogoTuComunidad.png" alt="Urbanización1" class="img-fluid-logo"
                             style="max-width: 100%; height: 200px;">
                     </div>
                 </div>
             </div>
         </div>
-    
+
         <div class="container">
             <div class="row">
                 <div class="col-md-6 text-center">
@@ -51,10 +133,11 @@
                 </div>
                 <div class="col-md-6 text-center">
                     <h2>Reuniones</h2>
-                    <p>Asiste a las reuniones para contribuir en la toma de decisiones importantes para tu comunidad!</p>
+                    <p>Asiste a las reuniones para contribuir en la toma de decisiones importantes para tu comunidad!
+                    </p>
                     <img src="../content/reunion_icon.png" alt="Reuniones" class="img-fluid">
                 </div>
-    
+
             </div>
             <div class="row">
                 <div class="col text-center">
@@ -63,80 +146,82 @@
                         <h3>Mejoraremos tu comunidad</h3>
                         <div>
                             <img src="../content/Urbanización1.jpeg" alt="Urbanización1" class="img-fluid2">
-    
+
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    
+
         <div class="fixed-top mr-3 mt-3">
             <a href="/registro" class="btn btn-light float-right">Registro</a>
             <a href="/login" class="btn btn-light mr-2 float-right">Iniciar sesión</a>
         </div>
-    
+
         <footer>
             <div class="container">
                 <a href="/contacto" class="text-white">Contáctanos</a>
             </div>
         </footer>
-    
-    </body>
-    </div>
+
+</body>
+</div>
 
 
-    <div th:if="${#authorization.expression('isAuthenticated()')}">
-        <div>
-        
+<div th:if="${#authorization.expression('isAuthenticated()')}">
+    <div>
+
         <header class="header" id="header">
             <div class="row">
-              <div class="container">
-                <div class="header-content">
-                  <div class="logo">
-                    <a href="/"
-                    ><h2 id="inicio">INICIO</h2></a>
-                  </div>
-                  <div class="nav-search">
-                    <h1 class="header_text" id="header_text">TuComunidad</h1>
-                  </div>
-                  <div class="nav-group">
-                    <ul>
-                        <li class="join">
-                          <a href="/perfil">
-                            <i class="fa-solid fa-user"></i>
-                            <span>Perfil</span>
-                          </a> 
-                          
-                        </li>
-                        <li>
-                          <a href="/logout">
-                            <span>Logout</span>
-                          </a> 
-                        </li>
-                      </ul>
-                  </div>
+                <div class="container">
+                    <div class="header-content">
+                        <div class="logo">
+                            <a href="/">
+                                <h2 id="inicio">INICIO</h2>
+                            </a>
+                        </div>
+                        <div class="nav-search">
+                            <h1 class="header_text" id="header_text">TuComunidad</h1>
+                        </div>
+                        <div class="nav-group">
+                            <ul>
+                                <li class="join">
+                                    <a href="/perfil">
+                                        <i class="fa-solid fa-user"></i>
+                                        <span>Perfil</span>
+                                    </a>
+
+                                </li>
+                                <li>
+                                    <a href="/logout">
+                                        <span>Logout</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
-              </div>
             </div>
-          </header>
-          <main>
+        </header>
+        <main>
             <aside>
-              <a href="/foro">
-                  <h2>Foro</h2>
-              </a>
-              <a href="/votaciones">
-                  <h2>Votaciones</h2>
-              </a>
-              <a href="/reserva">
-                  <h2>Reserva</h2>
-              </a>
-              <a href="#reuniones">
-                  <h2>Reuniones</h2>
-              </a>
-          </aside>
-          <h1>Bienvenido <span th:text="${#authentication.name}">Usuario</span> a TuComunidad</h1>
+                <a href="/foro">
+                    <h2>Foro</h2>
+                </a>
+                <a href="/votaciones">
+                    <h2>Votaciones</h2>
+                </a>
+                <a href="/reserva">
+                    <h2>Reserva</h2>
+                </a>
+                <a href="#reuniones">
+                    <h2>Reuniones</h2>
+                </a>
+            </aside>
+            <h1>Bienvenido <span th:text="${#authentication.name}">Usuario</span> a TuComunidad</h1>
 
 
     </div>
-</body>
+    </body>
+
 </html>
