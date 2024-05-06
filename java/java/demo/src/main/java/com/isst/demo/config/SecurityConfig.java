@@ -57,7 +57,7 @@ public class SecurityConfig {
                 .requestMatchers("/api/reserva/**").permitAll()
                 .requestMatchers("/admin").hasAuthority("ROLE_ADMIN")
                 .requestMatchers("/vecinos").hasAuthority("ROLE_VECINOS")
-                .requestMatchers("/css/**", "/js/**", "/images/**").permitAll()
+                .requestMatchers("/css/**", "/js/**", "/content/**", "/static/**").permitAll()
                 .anyRequest().authenticated())
 
                 .formLogin(form -> form
