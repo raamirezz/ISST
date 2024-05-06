@@ -234,7 +234,8 @@
                 e.preventDefault(); // Evita el comportamiento predeterminado del botón
 
                 // Obtener los valores de los campos del formulario
-                var codigo = $('#codigo').val();
+                var codigo = $('#community_code').val();
+
                 var calle = $('#calle').val();
                 var provincia = $('#provincia').val();
                 var instalaciones = []; // Array para almacenar las instalaciones seleccionadas
@@ -247,28 +248,35 @@
                 });
 
                 // Objeto con los datos del formulario
-                var formData = {
-                    codigo: codigo,
+                var data = {
+                    community_code: codigo,
                     calle: calle,
                     provincia: provincia,
-                    instalaciones: instalaciones
+                    hasPiscina: instalaciones.includes('Piscina'), // Verifica si se seleccionó Piscina
+                    hasTenis: instalaciones.includes('Pista de Tenis'), // Verifica si se seleccionó Pista de Tenis
+                    hasPadel: instalaciones.includes('Pista de Pádel'), // Verifica si se seleccionó Pista de Pádel
+                    hasGym: instalaciones.includes('Gimnasio'), // Verifica si se seleccionó Gimnasio
+                    hasLocalEventos: instalaciones.includes('Local de Eventos') // Verifica si se seleccionó Local de Eventos
                 };
 
-                // Petición AJAX para enviar los datos del formulario al backend
-                $.ajax({
-                    type: 'POST',
-                    url: '/crear_comunidad', // Ruta del controlador en el backend
-                    data: formData,
-                    dataType: 'json',
-                    encode: true
+                fetch('https://localhost:8443/api/comunidad/crear_comunidad', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(data)
                 })
-                    .done(function (data) {
-                        // Manejar la respuesta del servidor si la petición fue exitosa
-                        console.log(data); // Puedes mostrar mensajes de éxito o redireccionar a otra página
+                    .then(response => {
+                        if (response.ok) {
+                            return response.json(); // Si la respuesta es exitosa, devuelve los datos en formato JSON
+                        }
+                        throw new Error('Error en la solicitud'); // Si hay un error en la solicitud, lanza una excepción
                     })
-                    .fail(function (data) {
-                        // Manejar errores si la petición falla
-                        console.log(data.responseText); // Mostrar mensajes de error
+                    .then(data => {
+                        console.log(data); // Manejar la respuesta del servidor si la petición fue exitosa
+                    })
+                    .catch(error => {
+                        console.error('Error:', error); // Manejar errores si la petición falla
                     });
             });
         });

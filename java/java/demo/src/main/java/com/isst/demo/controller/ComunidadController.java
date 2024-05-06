@@ -22,7 +22,7 @@ public class ComunidadController {
     @Autowired
     private ComunidadService comunidadService;
 
-    @PostMapping("/crear")
+    @PostMapping("/crear_comunidad")
     public String crearComunidad(@RequestBody ComunidadDTO comunidadDTO) {
         // Procesa los datos de la comunidad recibidos en el DTO
         comunidadService.guardarComunidad(comunidadDTO);
