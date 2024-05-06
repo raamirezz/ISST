@@ -94,6 +94,11 @@ import com.isst.demo.service.TemaService;
             return "panel_admin";
         }
 
+        @GetMapping("/crear_comunidad")
+        public String crear_comunidad() {
+            return "crear_comunidad";
+        }
+
         @GetMapping("/ver_comunidades")
         public String ver_comunidades() {
             return "ver_comunidades";
