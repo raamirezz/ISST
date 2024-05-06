@@ -81,7 +81,7 @@ function cargarComentarios(temaId) {
           comentarioElement.className = 'comentario';
           comentarioElement.innerHTML = `
             <p>${comentario.descripcion}</p>
-            <small>${comentario.nombreUsuario}</small>
+            <small>${comentario.usuario}</small>
             <small>${haceTiempo}</small>
             ${botonEliminar}
           `;
