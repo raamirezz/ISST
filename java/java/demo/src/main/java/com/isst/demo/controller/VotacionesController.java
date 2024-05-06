@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import com.isst.demo.dto.VotacionesDTO;
 import com.isst.demo.dto.VotoDTO;
 import com.isst.demo.service.VotacionesService;
-
+@CrossOrigin(origins = { "*" })
 @RestController
 @RequestMapping("/api/votaciones")
 public class VotacionesController {

@@ -248,7 +248,7 @@
             $(
                 "#datepicker1, #datepicker2, #datepicker3, #datepicker4, #datepicker5"
             ).datepicker({
-                format: "yyyy/mm/dd",
+                format: "yyyy-mm-dd",
                 autoclose: true,
                 todayHighlight: true,
             });
@@ -276,12 +276,12 @@
                 var data = {
                     fecha: fechaSeleccionada,
                     hora: horaSeleccionada,
-                    instalacion: instalacion,
+                    tipo_instalacion: instalacion,
                     usuario: "Nombre de Usuario", // Aquí debes obtener el nombre de usuario del contexto de tu aplicación
                 };
 
                 // Realizar la solicitud POST a la API
-                fetch("http://localhost:8443/api/reserva/crear", {
+                fetch("https://localhost:8443/api/reserva/crear", {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json",
@@ -381,7 +381,7 @@
                         return;
                 }
 
-                fetch(`http://localhost:8443/api/reserva/actualizarDisponibilidad`, {
+                fetch(`https://localhost:8443/api/reserva/actualizarDisponibilidad`, {
                     method: "PUT",
                     headers: {
                         "Content-Type": "application/json",

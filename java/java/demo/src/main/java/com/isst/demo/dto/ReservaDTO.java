@@ -1,23 +1,23 @@
 package com.isst.demo.dto;
 
-import java.util.Date;
-
+import java.time.LocalDate;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class ReservaDTO {
-
     private Long id;
     private boolean disponible;
-    private Date fecha;
+
+    @JsonFormat(pattern = "yyyy-MM-dd")
+    private LocalDate fecha;
+
     private String hora;
     private String tipo_instalacion;
     private String usuario;
 
-    // Constructor
+    // Constructor, getters y setters
     public ReservaDTO() {
     }
-
-    // Getters y setters
 
     public Long getId() {
         return id;
@@ -35,11 +35,11 @@ public class ReservaDTO {
         this.disponible = disponible;
     }
 
-    public Date getFecha() {
+    public LocalDate getFecha() {
         return fecha;
     }
 
-    public void setFecha(Date fecha) {
+    public void setFecha(LocalDate fecha) {
         this.fecha = fecha;
     }
 
@@ -50,6 +50,7 @@ public class ReservaDTO {
     public void setHora(String hora) {
         this.hora = hora;
     }
+
     @JsonProperty("tipo_instalacion")
     public String getTipoInstalacion() {
         return tipo_instalacion;

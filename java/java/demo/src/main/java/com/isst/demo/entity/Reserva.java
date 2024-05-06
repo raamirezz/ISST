@@ -1,6 +1,6 @@
 package com.isst.demo.entity;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -17,16 +17,15 @@ public class Reserva {
     private Long id;
 
     private boolean disponible;
-    private Date fecha;
+    
+    private LocalDate fecha;
     private String hora;
     private String tipo_instalacion;
     private String usuario;
 
-    // Constructor
+    // Constructor, getters y setters
     public Reserva() {
     }
-
-    // Getters y setters
 
     public Long getId() {
         return id;
@@ -44,11 +43,11 @@ public class Reserva {
         this.disponible = disponible;
     }
 
-    public Date getFecha() {
+    public LocalDate getFecha() {
         return fecha;
     }
 
-    public void setFecha(Date fecha) {
+    public void setFecha(LocalDate fecha) {
         this.fecha = fecha;
     }
 

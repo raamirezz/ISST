@@ -24,7 +24,7 @@ public class ReservaController {
     public String crearReserva(@RequestBody ReservaDTO reservaDTO) {
         reservaService.crearReserva(reservaDTO);
         return "Reserva creada exitosamente";
-    }
+    }    
     
     // Maneja las solicitudes PUT para actualizar la disponibilidad de una reserva existente
     @PutMapping("/actualizarDisponibilidad")
