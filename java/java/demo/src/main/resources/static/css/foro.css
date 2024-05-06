@@ -312,23 +312,48 @@ body {
       padding: 20px;
       background-color: #f2f2f2;
   }
-  
+
   #addTopicForm input, #addTopicForm textarea {
-      width: 100%;
-      padding: 10px;
-      margin: 10px 0;
-      border: 1px solid #ddd;
-  }
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+}
+
+#addTopicForm button {
+    display: block;
+    margin: auto;
+    padding: 10px 20px;
+    background-color: #5f96d1;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+  #addTopicFormVotaciones {
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #f2f2f2;
+}
+
+#addTopicFormVotaciones input, #addTopicForm textarea {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ddd;
+}
+
+#addTopicFormVotaciones button {
+  display: block;
+  margin: auto;
+  padding: 10px 20px;
+  background-color: #5f96d1;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
   
-  #addTopicForm button {
-      display: block;
-      margin: auto;
-      padding: 10px 20px;
-      background-color: #5f96d1;
-      color: white;
-      border: none;
-      cursor: pointer;
-  }
+ 
   
   .addtopictext {
   display: flex;
@@ -508,9 +533,10 @@ body {
 }
 
 #comentarios {
-    margin-top: 20px;
-    display: flex;
-    justify-content: center;
+  display: flex;
+  flex-direction: column; /* Esto es clave para apilar verticalmente */
+  align-items: center; /* Centra los comentarios horizontalmente */
+  width: 100%;
 }
 
 
@@ -572,3 +598,54 @@ body {
   font-style: italic;
   white-space: nowrap;
 }
+
+/* Estilo para la página de detalles del tema */
+#tituloTema {
+  font-size: 2.5rem; /* Aumentar tamaño del título */
+  text-align: center;
+  margin-top: 20px;
+  color: var(--colorTexto1); /* Usar color principal para destacar */
+}
+
+#usuarioFecha {
+  text-align: center;
+  margin-top: 10px;
+  font-size: 1.5rem;
+  color: #87898f;
+}
+
+#descripcionTema {
+  background-color: var(--lightWhiteColor);
+  border-radius: 10px;
+  padding: 20px;
+  margin: 20px auto;
+  width: 80%;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  font-size: 2rem;
+}
+
+.comentario {
+  background-color: #f9f9f9;
+  margin-top: 10px;
+  border: 1px solid #ddd;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  border-radius: 10px; 
+  padding: 20px;
+  margin: 20px auto; 
+  width: 80%; 
+  box-sizing: border-box;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1); 
+}
+
+.comentario p {
+  font-size: 1.6rem;
+}
+
+.comentario small {
+  display: block;
+  font-size: 1.3rem;
+  color: #87898f;
+  margin-top: 5px;
+}
+

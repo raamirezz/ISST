@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="/css/foro.css">
     <link rel="stylesheet" href="/css/inicio.css">
+    <link rel="stylesheet" href="/css/votaciones.css">
 </head>
 
 <body>
@@ -61,22 +62,14 @@
 
         <!-- Contenido de la sección de votaciones -->
         <div class="container">
-            <div class="row">
-                <div class="col-md-3">
-                    <!-- Espacio vacío para alinear con los otros elementos -->
-                </div>
+            <div class="row justify-content-center">
+                
                 <div class="col-md-6">
                     <div id="votaciones">
                         <div th:if="${#authorization.expression('hasAuthority(''ROLE_ADMIN'')')}">
                         <!-- Formulario para crear una nueva votación -->
                         <h2 class="titulos">Nueva Votación</h2>
-                        <section class="left">
-                            
-                            <button id="formNuevaVotacion">Añadir Tema</button>
-                            <div class="inner-left">
-                            </div>
-                          </section>
-                        <div id="addTopicForm" style="display:none;">
+                        <div id="addTopicFormVotaciones">
                             <input type="text" id="descripcionVotacion" placeholder="Pregunta">
                             <button onclick="crearVotacion()">Crear Votación</button>
                         </div>

@@ -26,13 +26,15 @@ document.addEventListener('DOMContentLoaded', function() {
     .then(response => response.json())
     .then(temas => {
       const innerLeftDiv = document.querySelector('.inner-left');
+      temas.reverse();
       temas.forEach(tema => {
         const temaElement = document.createElement('div');
         temaElement.className = 'box_foro';
         const haceTiempo = calcularHaceTiempo(tema.fechaCreacion);
         let botonEliminar = tema.canDelete ? `<button type="button" onclick="eliminarTema(${tema.id})">Eliminar</button>` : '';
         let importanteIcono = tema.isImportant ? '<img src="../Content/importante.png" alt="Importante" style="width:20px;height:20px;"/>' : '';
-        let tituloClase = tema.isImportant ? 'titulo-importante' : '';temaElement.innerHTML = `
+        let tituloColor = tema.isImportant ? 'style="color: red;"' : ''; // Estilo condicional para el color rojo
+        temaElement.innerHTML = `
           <div class="img">
             <img src="../Content/302688.jpg" alt="" />
           </div>

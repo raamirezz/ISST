@@ -26,24 +26,30 @@ function crearElementoVotacion(votacion) {
     div.className = 'votacion';
     div.innerHTML = `
         <h3>${votacion.descripcion}</h3>
-        <p>A favor: ${votacion.votosFavor}</p>
-        <p>En contra: ${votacion.votosContra}</p>
+        <div class="votos">
+            <div><strong>A favor:</strong> ${votacion.votosFavor}</div>
+            <div><strong>En contra:</strong> ${votacion.votosContra}</div>
+        </div>
     `;
     const userHasVoted = Array.isArray(votacion.votantes) && votacion.votantes.includes('nombre_usuario_logueado');
     if (!userHasVoted) {
         const btnFavor = document.createElement('button');
         btnFavor.textContent = 'Votar a favor';
+        btnFavor.className = 'voto-btn';
         btnFavor.onclick = () => votar(votacion.id, true);
         div.appendChild(btnFavor);
 
         const btnContra = document.createElement('button');
         btnContra.textContent = 'Votar en contra';
+        btnContra.className = 'voto-btn';
+        btnContra.style.marginLeft = "4%";
         btnContra.onclick = () => votar(votacion.id, false);
         div.appendChild(btnContra);
     }
 
     return div;
 }
+
 
 
 function votar(id, voto) {

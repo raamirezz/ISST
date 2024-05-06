@@ -24,8 +24,8 @@ document.addEventListener('DOMContentLoaded', function() {
       const haceTiempo = calcularHaceTiempo(tema.fechaCreacion);
       document.getElementById('temaForo').innerHTML = `
         <h2 id="tituloTema">${tema.titulo}</h2>
-        <h3>${tema.nombreUsuario}</h3>
-        <h3>${haceTiempo}</h3>
+        <div id="usuarioFecha">${tema.nombreUsuario}</div>
+        <div id="usuarioFecha">${haceTiempo}</div>
 
         <p id="descripcionTema">${tema.descripcion}</p>
       `;
