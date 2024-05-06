@@ -135,7 +135,11 @@
               </a>
           </aside>
           <h1>Bienvenido <span th:text="${#authentication.name}">Usuario</span> a TuComunidad</h1>
-
+          <div th:if="${#authorization.expression('hasAuthority(''ROLE_ADMIN'')')}">
+            <a href="/registro_admin">
+                <h2>Registrar perfil vecino</h2>
+            </a>
+          </div>
 
     </div>
 </body>

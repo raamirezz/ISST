@@ -31,12 +31,13 @@ document.addEventListener('DOMContentLoaded', function() {
         temaElement.className = 'box_foro';
         const haceTiempo = calcularHaceTiempo(tema.fechaCreacion);
         let botonEliminar = tema.canDelete ? `<button type="button" onclick="eliminarTema(${tema.id})">Eliminar</button>` : '';
-        temaElement.innerHTML = `
+        let importanteIcono = tema.isImportant ? '<img src="../Content/importante.png" alt="Importante" style="width:20px;height:20px;"/>' : '';
+        let tituloClase = tema.isImportant ? 'titulo-importante' : '';temaElement.innerHTML = `
           <div class="img">
             <img src="../Content/302688.jpg" alt="" />
           </div>
           <div class="details">
-            <h3><a href="/temaForo?id=${tema.id}">${tema.titulo}</a></h3>
+          <h3 ${tituloColor}><a href="/temaForo?id=${tema.id}">${tema.titulo}</a>${importanteIcono}</h3>
             <div class="sub-details">
               <span>Creado por: ${tema.nombreUsuario}</span>
               <span>${haceTiempo}</span>
