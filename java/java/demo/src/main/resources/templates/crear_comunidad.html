@@ -252,11 +252,11 @@
                     community_code: codigo,
                     calle: calle,
                     provincia: provincia,
-                    hasPiscina: instalaciones.includes('Piscina'), // Verifica si se seleccionó Piscina
-                    hasTenis: instalaciones.includes('Pista de Tenis'), // Verifica si se seleccionó Pista de Tenis
-                    hasPadel: instalaciones.includes('Pista de Pádel'), // Verifica si se seleccionó Pista de Pádel
-                    hasGym: instalaciones.includes('Gimnasio'), // Verifica si se seleccionó Gimnasio
-                    hasLocalEventos: instalaciones.includes('Local de Eventos') // Verifica si se seleccionó Local de Eventos
+                    has_piscina: instalaciones.includes('Piscina'), // Verifica si se seleccionó Piscina
+                    has_tenis: instalaciones.includes('Pista de Tenis'), // Verifica si se seleccionó Pista de Tenis
+                    has_padel: instalaciones.includes('Pista de Pádel'), // Verifica si se seleccionó Pista de Pádel
+                    has_gym: instalaciones.includes('Gimnasio'), // Verifica si se seleccionó Gimnasio
+                    has_local_eventos: instalaciones.includes('Local de Eventos') // Verifica si se seleccionó Local de Eventos
                 };
 
                 fetch('https://localhost:8443/api/comunidad/crear_comunidad', {
