@@ -10,5 +10,6 @@ public interface TemaService {
     public TemaDTO crearTema(TemaDTO temaDTO);
     public TemaDTO obtenerTemaPorId(Long id);
     public List<TemaDTO> obtenerTodosLosTemas();
+    public boolean eliminarTema(Long id);
     
 }

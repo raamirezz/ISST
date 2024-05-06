@@ -50,14 +50,20 @@ public class SecurityConfig {
             .authorizeHttpRequests(auth -> auth
                 .requestMatchers("/").permitAll()
                 .requestMatchers("/registro").permitAll()
+                .requestMatchers("/registro_exitoso").permitAll()
                 .requestMatchers("/contacto").permitAll()
                 .requestMatchers("/contacto_exitoso").permitAll()
                 .requestMatchers("/api/registro/**").permitAll()
                 .requestMatchers("/api/reserva/**").permitAll()
                 .requestMatchers("/admin").hasAuthority("ROLE_ADMIN")
                 .requestMatchers("/vecinos").hasAuthority("ROLE_VECINOS")
+                .requestMatchers("/css/**", "/js/**", "/images/**").permitAll()
                 .anyRequest().authenticated())
-            .formLogin(form -> form.permitAll())
+
+                .formLogin(form -> form
+                .defaultSuccessUrl("/", true)
+                .permitAll()
+            )
             .logout(logout -> logout.permitAll());
 
         return http.build();

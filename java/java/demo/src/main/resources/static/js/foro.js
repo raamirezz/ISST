@@ -22,24 +22,25 @@ function calcularHaceTiempo(fecha) {
 }
 
 document.addEventListener('DOMContentLoaded', function() {
-  fetch('https://localhost:8443/api/tema/temas') // Asegúrate de que la URL coincida con tu endpoint
+  fetch('https://localhost:8443/api/tema/temas')
     .then(response => response.json())
     .then(temas => {
-      temas.sort((a, b) => new Date(b.fechaCreacion) - new Date(a.fechaCreacion));
-      
       const innerLeftDiv = document.querySelector('.inner-left');
       temas.forEach(tema => {
         const temaElement = document.createElement('div');
         temaElement.className = 'box_foro';
         const haceTiempo = calcularHaceTiempo(tema.fechaCreacion);
+        let botonEliminar = tema.canDelete ? `<button type="button" onclick="eliminarTema(${tema.id})">Eliminar</button>` : '';
         temaElement.innerHTML = `
           <div class="img">
             <img src="../Content/302688.jpg" alt="" />
           </div>
           <div class="details">
-          <h3><a href="/temaForo?id=${tema.id}">${tema.titulo}</a></h3>
+            <h3><a href="/temaForo?id=${tema.id}">${tema.titulo}</a></h3>
             <div class="sub-details">
-            <span>${haceTiempo}</span>
+              <span>Creado por: ${tema.nombreUsuario}</span>
+              <span>${haceTiempo}</span>
+              ${botonEliminar}
             </div>
           </div>
         `;
@@ -49,51 +50,18 @@ document.addEventListener('DOMContentLoaded', function() {
     .catch(error => console.error('Error al cargar temas:', error));
 });
 
-// function submitTopic() {
-//   const title = document.getElementById('topicTitle').value;
-//   const description = document.getElementById('topicDetails').value;
-//   const user = "Usuario"; 
-//   const timeAgo = "Justo ahora"; // placeholder
-
-//   const topicContainer = document.createElement('div');
-//   topicContainer.className = 'box_foro';
-//   topicContainer.innerHTML = `
-//   <div class="img">
-//       <img src="../Content/302688.jpg" alt="" />
-//   </div>
-//   <div class="details">
-//       <h3><a href="javascript:void(0);" onclick="verDetalle('${title}')">${title}</a></h3>
-//       <div class="sub-details">
-//       <span>${user}</span>
-//                    <span>${timeAgo}</span>
-//                    <div class="comment">
-//                        <i class="fa-solid fa-comment"></i>
-//                        <span>0</span>
-//                    </div>
-//       </div>
-//   </div>
-// `;
-//   localStorage.setItem('temaTitulo', title);
-//   localStorage.setItem('temaDescripcion', description);
-//   localStorage.setItem('usuarioNombre', 'Usuario 1');
-// localStorage.setItem('usuarioFoto', '../Content/302688.jpg');
-
-//   document.querySelector('.inner-left').appendChild(topicContainer);
-
-//   document.getElementById('addTopicForm').style.display = 'none';
-//   document.getElementById('topicTitle').value = '';
-//   document.getElementById('topicDetails').value = '';
-// }
 
 function submitTopic() {
   // Obtener los valores del formulario
   const title = document.getElementById('topicTitle').value;
   const description = document.getElementById('topicDetails').value;
+  const isImportant = document.getElementById('importantTopicCheckbox') ? document.getElementById('importantTopicCheckbox').checked : false;
 
   // Crear el objeto de datos
   const data = {
     titulo: title, // Asegúrate de que estos nombres de propiedades coincidan con los de tu TemaDTO
     descripcion: description,
+    isImportant: isImportant
   };
 
   // Realizar la solicitud POST a la API de Spring Boot para temas
@@ -124,6 +92,30 @@ function submitTopic() {
   document.getElementById('topicTitle').value = '';
   document.getElementById('topicDetails').value = '';
 }
+
+
+function eliminarTema(id) {
+  if (confirm('¿Estás seguro de querer eliminar este tema?')) {
+      fetch(`https://localhost:8443/api/tema/eliminar/${id}`, {
+          method: 'DELETE',  // Cambiado a DELETE si tu API lo soporta, sino deja POST
+          headers: {
+              'Content-Type': 'application/json'
+          }
+      })
+      .then(response => {
+          if (response.ok) {
+              console.log("Tema eliminado exitosamente");
+              location.reload(); // Recargar la página para mostrar la lista actualizada
+          } else {
+              throw new Error('No se pudo eliminar el tema');
+          }
+      })
+      .catch(error => {
+          console.error("Error al eliminar el tema: ", error);
+      });
+  }
+};
+
 
 
 

@@ -27,6 +27,8 @@ public class Comentarios {
     @JoinColumn(name = "tema_id")
     private Tema tema;
 
+    private String usuario;
+
 
     // Constructor vacío (obligatorio para JPA)
     public Comentarios() {
@@ -75,6 +77,14 @@ public class Comentarios {
 
     public void setTema(Tema tema) {
         this.tema = tema;
+    }
+
+    public String getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(String usuario) {
+        this.usuario = usuario;
     }
 
     // Método toString()

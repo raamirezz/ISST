@@ -9,5 +9,6 @@ public interface ComentariosService {
     public ComentariosDTO crearComentario(ComentariosDTO ComentariosDTO);
     public List<ComentariosDTO> obtenerTodosLosComentarios();
     public List<ComentariosDTO> obtenerComentariosPorTemaId(Long temaId);
+    public boolean eliminarComentario(Long id);
     
 }

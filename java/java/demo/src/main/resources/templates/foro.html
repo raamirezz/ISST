@@ -9,7 +9,6 @@
   </head>
   <body>
     <header class="header" id="header">
-      <h1 class="header_text" id="header_text">Foro TuComunidad</h1>
       <div class="row">
         <div class="container">
           <div class="header-content">
@@ -18,21 +17,21 @@
               ><h2 id="inicio">INICIO</h2></a>
             </div>
             <div class="nav-search">
-              <div class="form-group">
-                <input type="text" placeholder="Buscar aporte" />
-                <i class="fa-solid fa-magnifying-glass"></i>
-              </div>
+              <h1 class="header_text" id="header_text">FORO</h1>
             </div>
             <div class="nav-group">
               <ul>
                 <li class="join">
-                  <a href="#Usuario">
+                  <a href="/perfil">
                     <i class="fa-solid fa-user"></i>
-                    <span>Mi perfil</span>
+                    <span>Perfil</span>
                   </a> 
+                  
                 </li>
                 <li>
-                  <a href="#"><i class="fa-solid fa-ellipsis-vertical"></i></a>
+                  <a href="/logout">
+                    <span>Logout</span>
+                  </a> 
                 </li>
               </ul>
             </div>
@@ -69,6 +68,10 @@
         <h2 class="addtopictext">Añadir Nuevo Tema</h2>
         <input type="text" id="topicTitle" placeholder="Título">
         <textarea id="topicDetails" placeholder="Descripción"></textarea>
+        <div th:if="${#authorization.expression('hasAuthority(''ROLE_ADMIN'')')}">
+          <input type="checkbox" id="importantTopicCheckbox">
+          <label for="importantTopicCheckbox">Marcar como importante</label>
+      </div>
         <button onclick="submitTopic()">Publicar</button>
     </div>
     </main>

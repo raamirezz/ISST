@@ -1,10 +1,11 @@
 package com.isst.demo.repository;
 
 import com.isst.demo.entity.Registro;
-import org.springframework.data.repository.CrudRepository;
-import org.springframework.stereotype.Repository;
 
+import java.util.Optional;
 
-public interface RegistroRepository extends CrudRepository<Registro, Long> {
-    // Aquí puedes agregar métodos personalizados de consulta si es necesario
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface RegistroRepository extends JpaRepository<Registro, Long> {
+    Optional<Registro> findByUsuario(String usuario);
 }

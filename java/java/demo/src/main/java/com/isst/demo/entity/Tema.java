@@ -4,11 +4,14 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.PrePersist;
 import jakarta.persistence.Table;;
@@ -24,6 +27,10 @@ public class Tema {
     private String descripcion;
     private LocalDateTime fechaCreacion;
     private Boolean isImportant = false;
+
+
+    @Column(name = "nombreUsuario")
+    private String usuario;
 
     // Relación de uno a muchos: Un tema puede tener muchos comentarios
     @OneToMany(mappedBy = "tema", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
@@ -87,6 +94,14 @@ public class Tema {
 
     public void setIsImportant(Boolean isImportant) {
         this.isImportant = isImportant;
+    }
+
+    public String getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(String usuario) {
+        this.usuario = usuario;
     }
 
     public List<Comentarios> getComentarios() {

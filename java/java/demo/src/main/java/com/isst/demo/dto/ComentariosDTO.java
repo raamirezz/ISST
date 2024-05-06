@@ -8,6 +8,9 @@ public class ComentariosDTO {
     private String descripcion;
     private LocalDateTime fechaCreacion;
     private Long temaId;
+    private boolean canDelete;
+    private String nombreUsuario;
+    private String usuario;
 
     // Constructor vacío (obligatorio para JPA)
     public ComentariosDTO() {
@@ -60,6 +63,30 @@ public class ComentariosDTO {
 
     public void setTemaId(Long temaId) {
         this.temaId = temaId;
+    }
+
+    public String getNombreUsuario() {
+        return nombreUsuario;
+    }
+
+    public void setNombreUsuario(String nombreUsuario) {
+        this.nombreUsuario = nombreUsuario;
+    }
+
+    public boolean isCanDelete() {
+        return canDelete;
+    }
+
+    public void setCanDelete(boolean canDelete) {
+        this.canDelete = canDelete;
+    }
+
+    public String getUsuario() {
+        return usuario;
+    }
+    
+    public void setUsuario(String usuario) {
+        this.usuario = usuario;
     }
 
 

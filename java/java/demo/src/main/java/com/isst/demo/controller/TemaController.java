@@ -1,8 +1,12 @@
 package com.isst.demo.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -43,5 +47,19 @@ public class TemaController {
         TemaDTO nuevoTema = temaService.crearTema(temaDTO);
         return ResponseEntity.ok().body(nuevoTema);
     }
+
+    @DeleteMapping("/eliminar/{id}")
+public ResponseEntity<Void> eliminarTema(@PathVariable Long id) {
+    Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+    if (!auth.getAuthorities().stream().anyMatch(a -> a.getAuthority().equals("ROLE_ADMIN"))) {
+        return ResponseEntity.status(HttpStatus.FORBIDDEN).build();
+    }
+    boolean deleted = temaService.eliminarTema(id);
+    if (deleted) {
+        return ResponseEntity.ok().build();
+    } else {
+        return ResponseEntity.notFound().build();
+    }
+}
 
 }

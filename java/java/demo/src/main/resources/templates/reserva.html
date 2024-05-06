@@ -10,15 +10,45 @@
         href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css">
     <link rel="stylesheet" href="../css/reserva.css">
     <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="/css/foro.css">
+    <link rel="stylesheet" href="/css/inicio.css">
 </head>
 
 <body>
     <div class="fixed-top-right">
         <a href="/perfil" class="btn btn-primary">Perfil</a>
     </div>
-    <header>
-        <h1>Bienvenido a TuComunidad</h1>
-    </header>
+    <header class="header" id="header">
+        <div class="row">
+          <div class="container">
+            <div class="header-content">
+              <div class="logo">
+                <a href="/"
+                ><h2 id="inicio">INICIO</h2></a>
+              </div>
+              <div class="nav-search">
+                <h1 class="header_text" id="header_text">RESERVAS</h1>
+              </div>
+              <div class="nav-group">
+                <ul>
+                    <li class="join">
+                      <a href="/perfil">
+                        <i class="fa-solid fa-user"></i>
+                        <span>Perfil</span>
+                      </a> 
+                      
+                    </li>
+                    <li>
+                      <a href="/logout">
+                        <span>Logout</span>
+                      </a> 
+                    </li>
+                  </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-3">

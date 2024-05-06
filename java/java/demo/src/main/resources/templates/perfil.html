@@ -4,30 +4,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/perfil.css">
-
     <title>Perfil</title>
 </head>
 <body>
     <div class="container">
         <h1>Perfil de Usuario</h1>
-        <div class="community-info">
-            <p>Perteneces a la comunidad: <strong>TuComunidad</strong></p>
-        </div>
         <div class="form-group">
             <label for="usuario">Nombre de usuario:</label>
-            <input type="text" id="usuario" name="usuario" value="Usuario123" readonly>
+            <input type="text" id="usuario" name="usuario" th:value="${registro.usuario}" readonly>
         </div>
         <div class="form-group">
             <label for="name">Nombre:</label>
-            <input type="text" id="name" name="name" value="John" readonly>
+            <input type="text" id="name" name="name" th:value="${registro.nombre}" readonly>
         </div>
         <div class="form-group">
             <label for="last-name">Apellidos:</label>
-            <input type="text" id="last-name" name="last-name" value="Doe" readonly>
+            <input type="text" id="last-name" name="last-name" th:value="${registro.apellidos}" readonly>
         </div>
         <div class="form-group">
             <label for="email">Email:</label>
-            <input type="email" id="email" name="email" value="john.doe@example.com" readonly>
+            <input type="email" id="email" name="email" th:value="${registro.email}" readonly>
+        </div>
+        <div class="form-group">
+            <label for="communityCode">Código de TuComunidad:</label>
+            <input type="text" id="communityCode" name="communityCode" th:value="${registro.communityCode}" readonly>
         </div>
         <a href="/cambiar_contraseña">Cambiar Contraseña</a>
     </div>

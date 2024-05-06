@@ -1,112 +1,82 @@
-document.addEventListener("DOMContentLoaded", function() {
-    // Capturar el evento de clic en el botón de "Crear Votación"
-    document.getElementById('btnCrearVotacion').addEventListener('click', function() {
-        // Obtener los valores del formulario
-        const pregunta = document.getElementById('pregunta').value;
-        const descripcion = document.getElementById('descripcion').value;
-
-        // Llamar a la función para crear la votación
-        crearVotacion(pregunta, descripcion);
+document.addEventListener('DOMContentLoaded', function () {
+    cargarVotaciones();
+    document.getElementById('formNuevaVotacion').addEventListener('click', function () {
+        document.getElementById('addTopicForm').style.display = 'block';
     });
 });
 
-// Función para crear una nueva votación
-function crearVotacion(pregunta, descripcion) {
-    // Objeto con los datos de la votación
-    const data = {
-        id: obtenerNuevoID(), // Generar un nuevo ID para la votación
-        titulo: pregunta,
-        descripcion: descripcion,
-        codigoComunidad: "TuCódigoDeComunidad" // Reemplaza esto con el código de tu comunidad
-    };
-
-    // Configuración del fetch
-    const requestOptions = {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(data)
-    };
-    console.log(data)
-    // URL del endpoint para crear votación
-    const url = '/votaciones/crear';
-    //Borrar la siguiente linea si no sirve
-    agregarVotacion(data);
-    // Realizar la solicitud fetch
-    fetch(url, requestOptions)
-        .then(response => response.json())
-        .then(data => {
-            // Manejar la respuesta
-            console.log('Votación creada exitosamente:', data);
-
-            // Crear el elemento de la votación en el front-end
-            agregarVotacion(data);
+function cargarVotaciones() {
+    fetch('/api/votaciones/votaciones')
+        .then(response => {
+            if (!response.ok) throw new Error('Network response was not ok');
+            return response.json();
         })
-        .catch(error => console.error('Error:', error));
+        .then(votaciones => {
+            const container = document.getElementById('listaVotaciones');
+            container.innerHTML = ''; // Limpiar votaciones anteriores
+            votaciones.forEach(votacion => {
+                container.appendChild(crearElementoVotacion(votacion));
+            });
+        })
+        .catch(error => console.error('Error al cargar votaciones:', error));
 }
 
-// Función para obtener un nuevo ID para la votación
-function obtenerNuevoID() {
-
-    return listaVotaciones.childElementCount + 1;
-}
-
-// Función para agregar una nueva votación al front-end
-function agregarVotacion(votacion) {
-    var listaVotaciones = document.getElementById('listaVotaciones');
-
-    // Crear el elemento de la votación
-    var votacionElement = document.createElement('div');
-    votacionElement.className = 'card mb-3';
-    votacionElement.innerHTML = `
-        <div class="card-body">
-            <h3 class="card-title">${votacion.titulo}</h3>
-            <p class="card-text">${votacion.descripcion}</p>
-            <div class="d-flex justify-content-between mt-3">
-            <button class="btn btn-success" onclick="votarConAlerta(true, ${votacion.id})">A Favor</button>
-            <button class="btn btn-danger" onclick="votarConAlerta(false, ${votacion.id})">En Contra</button>
-            </div>
-        </div>
+function crearElementoVotacion(votacion) {
+    const div = document.createElement('div');
+    div.className = 'votacion';
+    div.innerHTML = `
+        <h3>${votacion.descripcion}</h3>
+        <p>A favor: ${votacion.votosFavor}</p>
+        <p>En contra: ${votacion.votosContra}</p>
     `;
+    const userHasVoted = Array.isArray(votacion.votantes) && votacion.votantes.includes('nombre_usuario_logueado');
+    if (!userHasVoted) {
+        const btnFavor = document.createElement('button');
+        btnFavor.textContent = 'Votar a favor';
+        btnFavor.onclick = () => votar(votacion.id, true);
+        div.appendChild(btnFavor);
 
-    // Agregar la votación al final de la lista de votaciones
-    listaVotaciones.appendChild(votacionElement);
+        const btnContra = document.createElement('button');
+        btnContra.textContent = 'Votar en contra';
+        btnContra.onclick = () => votar(votacion.id, false);
+        div.appendChild(btnContra);
+    }
+
+    return div;
 }
-// Función para registrar el voto y mostrar una alerta
-function votarConAlerta(esAFavor, idVotacion) {
-    // Objeto con los datos del voto
-    const data = {
-        idVotacion: idVotacion,
-        codigoComunidad: "TuCódigoDeComunidad", // Reemplaza esto con el código de tu comunidad
-        nombreUsuario: "NombreUsuario", // Reemplaza esto con el nombre del usuario que está votando
-        voto: esAFavor // true si es a favor, false si es en contra
-    };
 
-    // Configuración del fetch para registrar el voto
-    const requestOptions = {
+
+function votar(id, voto) {
+    fetch(`/api/votaciones/votar/${id}`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify(data)
-    };
+        body: JSON.stringify({ voto: voto })
+    }).then(response => {
+        if (response.ok) {
+            cargarVotaciones(); // Recargar las votaciones para actualizar la vista
+        } else {
+            alert('Error al votar');
+        }
+    });
+}
 
-    // URL del endpoint para registrar el voto
-    const url = '/votaciones/votar';
-    console.log(data)
-    // Realizar la solicitud fetch para registrar el voto
-    fetch(url, requestOptions)
-        .then(response => response.json())
-        .then(data => {
-            // Manejar la respuesta
-            console.log('Voto registrado exitosamente:', data);
-            // Mostrar una alerta indicando que el voto se ha registrado
-            alert('Voto registrado exitosamente');
-        })
-        .catch(error => {
-            console.error('Error:', error);
-            // Mostrar una alerta en caso de error
-            alert('Error al registrar el voto');
-        });
+function crearVotacion() {
+    const descripcion = document.getElementById('descripcionVotacion').value;
+    fetch('/api/votaciones/crear', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ descripcion: descripcion })
+    }).then(response => {
+        if (response.ok) {
+            cargarVotaciones(); // Recargar las votaciones
+            document.getElementById('addTopicForm').style.display = 'none'; // Ocultar el formulario
+            document.getElementById('descripcionVotacion').value = ''; // Limpiar el campo de texto
+        } else {
+            alert('Error al crear la votación');
+        }
+    });
 }

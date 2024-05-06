@@ -2,6 +2,7 @@ package com.isst.demo.entity;
 
 import com.isst.demo.dto.RegistroDTO;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -20,6 +21,7 @@ public class Registro {
     private String email;
     private String authority;
     private Long communityCode;
+    @Column(name = "usuario")
     private String usuario;
     private String contraseña;
     private Boolean enabled = true;

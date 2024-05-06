@@ -6,217 +6,67 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Votaciones</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-    <style>
-        /* Header */
-        header {
-            text-align: center;
-            padding: 20px;
-            background-color: #5f96d1;
-            /* Color de fondo azulado */
-            color: white;
-            /* Color del texto */
-            margin: 0;
-            border-radius: 5px;
-            font-family: Arial, sans-serif;
-        }
-
-
-        /* Bloque lateral */
-        aside {
-            width: 220px;
-            background-color: #f2f2f2;
-            padding: 20px;
-            height: 100%;
-            margin: 0;
-            border-radius: 15px;
-        }
-
-        .asideLetras {
-            font-family: Arial, sans-serif;
-            font-size: x-large;
-            color: #539bbd;
-            font-weight: bold;
-
-        }
-
-        .asideLetras:hover {
-            background-color: #ddd;
-            border-radius: 10px;
-        }
-
-
-        /* Perfil Box*/
-        .fixed-top-right {
-            position: fixed;
-            top: 0;
-            right: 0;
-            padding: 10px;
-        }
-    </style>
-
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="/css/foro.css">
+    <link rel="stylesheet" href="/css/inicio.css">
 </head>
 
 <body>
     <div class="fixed-top-right">
-        <a href="perfil.html" class="btn btn-primary">Perfil</a>
+        <a href="/perfil" class="btn btn-primary">Perfil</a>
     </div>
     <header>
-        <h1 class="mt-5">Bienvenido a TuComunidad</h1>
+        <h1>Bienvenido a TuComunidad</h1>
     </header>
 
-    <main class="container">
-        <div class="row">
-            <aside class="col-md-3">
-                <a href="foro.html">
-                    <h2 class="asideLetras">Foro</h2>
-                </a>
-                <a href="votaciones.html">
-                    <h2 class="asideLetras">Votaciones</h2>
-                </a>
-                <a href="/reserva">
-                    <h2 class="asideLetras">Reserva</h2>
-                </a>
-                <a href="#reuniones">
-                    <h2 class="asideLetras">Reuniones</h2>
-                </a>
-            </aside>
+    <main>
+        <aside>
+            <a href="foro.html">
+                <h2 class="asideLetras">Foro</h2>
+            </a>
+            <a href="votaciones.html">
+                <h2 class="asideLetras">Votaciones</h2>
+            </a>
+            <a href="reserva.html">
+                <h2 class="asideLetras">Reserva</h2>
+            </a>
+            <a href="#reuniones">
+                <h2 class="asideLetras">Reuniones</h2>
+            </a>
+        </aside>
 
-            <!-- Contenido de la sección de votaciones -->
-            <div class="col-md-9">
-                <div id="votaciones">
-                    <!-- Formulario para crear una nueva votación -->
-                    <h2 class="titulos mt-5">Nueva Votación</h2>
-
-                    <div id="nuevaVotacionForm">
-                        <input type="text" id="pregunta" placeholder="Pregunta" class="form-control mb-2">
-                        <textarea id="descripcion" placeholder="Descripción" class="form-control mb-2"></textarea>
-                        <button id="btnCrearVotacion" class="btn btn-success">Crear Votación</button>
-                    </div>
-                    </section>
-
-                    <!-- Listado de votaciones existentes -->
-                    <h2 class="titulos mt-5">Votaciones Actuales</h2>
-                    <div id="listaVotaciones">
-                        <!-- Aquí se cargarán las votaciones existentes -->
+        <!-- Contenido de la sección de votaciones -->
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3">
+                    <!-- Espacio vacío para alinear con los otros elementos -->
+                </div>
+                <div class="col-md-6">
+                    <div id="votaciones">
+                        <!-- Formulario para crear una nueva votación -->
+                        <h2 class="titulos">Nueva Votación</h2>
+                        <section class="left">
+                            
+                            <button id="formNuevaVotacion">Añadir Tema</button>
+                            <div class="inner-left">
+                            </div>
+                          </section>
+                        <div id="addTopicForm" style="display:none;">
+                            <input type="text" id="pregunta" placeholder="Pregunta">
+                            <textarea id="opciones" placeholder="Opciones (separadas por coma)"></textarea>
+                            <button onclick="crearVotacion()">Crear Votación</button>
+                        </div>
+                        <!-- Listado de votaciones existentes -->
+                        <h2 class="titulos">Votaciones Actuales</h2>
+                        <div id="listaVotaciones">
+                            <!-- Aquí se cargarán las votaciones existentes -->
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </main>
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            // Capturar el evento de clic en el botón de "Crear Votación"
-            document.getElementById('btnCrearVotacion').addEventListener('click', function () {
-                // Obtener los valores del formulario
-                const pregunta = document.getElementById('pregunta').value;
-                const descripcion = document.getElementById('descripcion').value;
-
-                // Llamar a la función para crear la votación
-                crearVotacion(pregunta, descripcion);
-            });
-        });
-
-        // Función para crear una nueva votación
-        function crearVotacion(pregunta, descripcion) {
-            // Objeto con los datos de la votación
-            const data = {
-                id: obtenerNuevoID(), // Generar un nuevo ID para la votación
-                titulo: pregunta,
-                descripcion: descripcion,
-                codigoComunidad: "TuCódigoDeComunidad" // Reemplaza esto con el código de tu comunidad
-            };
-
-            // Configuración del fetch
-            const requestOptions = {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(data)
-            };
-            console.log(data)
-            // URL del endpoint para crear votación
-            const url = '/votaciones/crear';
-            //Borrar la siguiente linea si no sirve
-            agregarVotacion(data);
-            // Realizar la solicitud fetch
-            fetch(url, requestOptions)
-                .then(response => response.json())
-                .then(data => {
-                    // Manejar la respuesta
-                    console.log('Votación creada exitosamente:', data);
-
-                    // Crear el elemento de la votación en el front-end
-                    agregarVotacion(data);
-                })
-                .catch(error => console.error('Error:', error));
-        }
-
-        // Función para obtener un nuevo ID para la votación
-        function obtenerNuevoID() {
-
-            return listaVotaciones.childElementCount + 1;
-        }
-
-        // Función para agregar una nueva votación al front-end
-        function agregarVotacion(votacion) {
-            var listaVotaciones = document.getElementById('listaVotaciones');
-
-            // Crear el elemento de la votación
-            var votacionElement = document.createElement('div');
-            votacionElement.className = 'card mb-3';
-            votacionElement.innerHTML = `
-        <div class="card-body">
-            <h3 class="card-title">${votacion.titulo}</h3>
-            <p class="card-text">${votacion.descripcion}</p>
-            <div class="d-flex justify-content-between mt-3">
-            <button class="btn btn-success" onclick="votarConAlerta(true, ${votacion.id})">A Favor</button>
-            <button class="btn btn-danger" onclick="votarConAlerta(false, ${votacion.id})">En Contra</button>
-            </div>
-        </div>
-    `;
-
-            // Agregar la votación al final de la lista de votaciones
-            listaVotaciones.appendChild(votacionElement);
-        }
-        // Función para registrar el voto y mostrar una alerta
-        function votarConAlerta(esAFavor, idVotacion) {
-            // Objeto con los datos del voto
-            const data = {
-                idVotacion: idVotacion,
-                codigoComunidad: "TuCódigoDeComunidad", // Reemplaza esto con el código de tu comunidad
-                nombreUsuario: "NombreUsuario", // Reemplaza esto con el nombre del usuario que está votando
-                voto: esAFavor // true si es a favor, false si es en contra
-            };
-
-            // Configuración del fetch para registrar el voto
-            const requestOptions = {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(data)
-            };
-
-            // URL del endpoint para registrar el voto
-            const url = '/votaciones/votar';
-            console.log(data)
-            // Realizar la solicitud fetch para registrar el voto
-            fetch(url, requestOptions)
-                .then(response => response.json())
-                .then(data => {
-                    // Manejar la respuesta
-                    console.log('Voto registrado exitosamente:', data);
-                    // Mostrar una alerta indicando que el voto se ha registrado
-                    alert('Voto registrado exitosamente');
-                })
-                .catch(error => {
-                    console.error('Error:', error);
-                    // Mostrar una alerta en caso de error
-                    alert('Error al registrar el voto');
-                });
-        }
-    </script>
+    <script src="../js/votaciones.js"></script>
 </body>
 
 </html>

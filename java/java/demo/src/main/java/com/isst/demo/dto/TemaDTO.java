@@ -3,6 +3,8 @@ package com.isst.demo.dto;
 import java.time.LocalDateTime;
 import java.util.List;
 
+import com.isst.demo.entity.Registro;
+
 
 
 public class TemaDTO {
@@ -13,6 +15,8 @@ public class TemaDTO {
     private LocalDateTime fechaCreacion;
     private Boolean isImportant;
     private List<ComentariosDTO> comentarios;
+    private boolean canDelete;
+    private String nombreUsuario;
 
     // Constructor vacío (obligatorio para JPA)
     public TemaDTO() {
@@ -85,6 +89,22 @@ public class TemaDTO {
 
     public void setComentarios(List<ComentariosDTO> comentarios) {
         this.comentarios = comentarios;
+    }
+
+    public String getNombreUsuario() {
+        return nombreUsuario;
+    }
+
+    public void setNombreUsuario(String nombreUsuario) {
+        this.nombreUsuario = nombreUsuario;
+    }
+
+    public boolean isCanDelete() {
+        return canDelete;
+    }
+
+    public void setCanDelete(boolean canDelete) {
+        this.canDelete = canDelete;
     }
 
 
