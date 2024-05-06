@@ -55,7 +55,7 @@ $(document).ready(function () {
       };
   
       // Realizar la solicitud POST a la API
-      fetch("https://localhost:8443/api/reserva/crear", {
+      fetch("http://localhost:8080/api/reserva/crear", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -155,7 +155,7 @@ $(document).ready(function () {
           return;
       }
   
-      fetch(`https://localhost:8443/api/reserva/actualizarDisponibilidad`, {
+      fetch(`http://localhost:8080/api/reserva/actualizarDisponibilidad`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",

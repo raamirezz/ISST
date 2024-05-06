@@ -63,13 +63,13 @@ function votar(id, voto) {
 }
 
 function crearVotacion() {
-    const descripcion = document.getElementById('descripcionVotacion').value;
+    const descripcion = document.getElementById('descripcionVotacion').value; // Asegúrate de que este ID sea correcto
     fetch('/api/votaciones/crear', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ descripcion: descripcion })
+        body: JSON.stringify({ descripcion: descripcion, opciones: ['A favor', 'En contra'] }) // Enviar opciones predeterminadas
     }).then(response => {
         if (response.ok) {
             cargarVotaciones(); // Recargar las votaciones
@@ -80,3 +80,4 @@ function crearVotacion() {
         }
     });
 }
+

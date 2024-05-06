@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../static/css/registro.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            background-image: url('../Content/arboles.jpeg');
+            background-size: cover;
+            background-position: center;
+        }
+        .registration-container {
+            width: 300px;
+            margin: 100px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        input[type="text"], input[type="email"], input[type="tel"], input[type="password"], select {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="registration-container">
+        <h2>Registro</h2>
+        <form id="registration-form">
+            <div class="form-group">
+                <label for="usuario">Nombre de usuario:</label>
+                <input type="text" id="usuario" name="usuario" required>
+            </div>
+            <div class="form-group">
+                <label for="contraseña">Contraseña:</label>
+                <input type="password" id="contraseña" name="contraseña" required>
+            </div>
+            <div class="form-group">
+                <label for="confirmar-contraseña">Confirmar Contraseña:</label>
+                <input type="password" id="confirmar-contraseña" name="confirmar-contraseña" required>
+            </div>
+            <div class="form-group">
+                <label for="name">Nombre:</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="last-name">Apellidos:</label>
+                <input type="text" id="last-name" name="last-name" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="community-code">Código de la Comunidad:</label>
+                <input type="text" id="community-code" name="community-code" required>
+            </div>
+            <div class="form-group">
+                <label for="role">Rol del Usuario:</label>
+                <select id="role" name="role">
+                    <option value="ROLE_VECINOS">Vecino</option>
+                    <option value="ROLE_ADMIN">Administrador</option>
+                </select>
+            </div>
+            <button type="button" id="register-button">Registrar perfil</button>
+        </form>
+    </div>
+    <script src="/js/registro_admin.js"></script> <!-- Asegúrate de tener este archivo JS -->
+</body>
+</html>

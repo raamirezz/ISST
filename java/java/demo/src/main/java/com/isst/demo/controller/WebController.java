@@ -54,6 +54,11 @@ import com.isst.demo.service.TemaService;
             return "registro_exitoso";
         }
 
+        @GetMapping("/registro_admin")
+        public String registro_admin() {
+            return "registro_admin";
+        }
+
         @GetMapping("/reserva")
         public String reserva() {
             return "reserva";
