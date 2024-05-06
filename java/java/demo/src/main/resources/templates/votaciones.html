@@ -6,28 +6,52 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Votaciones</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../css/base.css">
     <link rel="stylesheet" href="/css/foro.css">
     <link rel="stylesheet" href="/css/inicio.css">
 </head>
 
 <body>
-    <div class="fixed-top-right">
-        <a href="/perfil" class="btn btn-primary">Perfil</a>
-    </div>
-    <header>
-        <h1>Bienvenido a TuComunidad</h1>
-    </header>
+    <header class="header" id="header">
+        <div class="row">
+          <div class="container">
+            <div class="header-content">
+              <div class="logo">
+                <a href="/"
+                ><h2 id="inicio">INICIO</h2></a>
+              </div>
+              <div class="nav-search">
+                <h1 class="header_text" id="header_text">VOTACIONES</h1>
+              </div>
+              <div class="nav-group">
+                <ul>
+                  <li class="join">
+                    <a href="/perfil">
+                      <i class="fa-solid fa-user"></i>
+                      <span>Perfil</span>
+                    </a> 
+                    
+                  </li>
+                  <li>
+                    <a href="/logout">
+                      <span>Logout</span>
+                    </a> 
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
 
     <main>
         <aside>
-            <a href="foro.html">
+            <a href="/foro">
                 <h2 class="asideLetras">Foro</h2>
             </a>
-            <a href="votaciones.html">
+            <a href="/votaciones">
                 <h2 class="asideLetras">Votaciones</h2>
             </a>
-            <a href="reserva.html">
+            <a href="/reserva">
                 <h2 class="asideLetras">Reserva</h2>
             </a>
             <a href="#reuniones">
@@ -43,6 +67,7 @@
                 </div>
                 <div class="col-md-6">
                     <div id="votaciones">
+                        <div th:if="${#authorization.expression('hasAuthority(''ROLE_ADMIN'')')}">
                         <!-- Formulario para crear una nueva votación -->
                         <h2 class="titulos">Nueva Votación</h2>
                         <section class="left">
@@ -56,6 +81,7 @@
                             <textarea id="opciones" placeholder="Opciones (separadas por coma)"></textarea>
                             <button onclick="crearVotacion()">Crear Votación</button>
                         </div>
+                    </div>
                         <!-- Listado de votaciones existentes -->
                         <h2 class="titulos">Votaciones Actuales</h2>
                         <div id="listaVotaciones">
@@ -66,7 +92,7 @@
             </div>
         </div>
     </main>
-    <script src="../js/votaciones.js"></script>
+    <script src="/js/votaciones.js"></script>
 </body>
 
 </html>
