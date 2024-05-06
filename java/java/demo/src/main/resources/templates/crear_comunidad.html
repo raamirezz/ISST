@@ -1,12 +1,104 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Crear Comunidad</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../static/css/crear_comunidad.css">
+    <style>
+        /* Header */
+        header {
+            text-align: center;
+            padding: 20px;
+            background-color: #5f96d1;
+            /* Color de fondo azulado */
+            color: white;
+            /* Color del texto */
+            margin: 0;
+            border-radius: 5px;
+            font-family: Arial, sans-serif;
+        }
+
+
+        /* Bloque lateral */
+        aside {
+            width: 220px;
+            background-color: #f2f2f2;
+            padding: 20px;
+            height: 100%;
+            margin: 0;
+            border-radius: 15px;
+        }
+
+        .instalacion-img-container {
+            display: flex;
+            justify-content: center;
+        }
+
+        .instalacion-img {
+            width: 300px;
+            /* Establece el ancho deseado para todas las imágenes */
+            height: auto;
+            /* Mantén la proporción de aspecto */
+            max-width: 100%;
+            /* Evita que las imágenes se salgan del contenedor */
+        }
+
+        .instalacion-img-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            /* Permite que las imágenes se envuelvan si el espacio es insuficiente */
+        }
+
+        .instalacion-img {
+            width: auto;
+            /* Utiliza el ancho natural de la imagen */
+            height: auto;
+            /* Utiliza la altura natural de la imagen */
+            max-width: 180px;
+            /* Establece un ancho máximo para las imágenes */
+            max-height: 180px;
+            /* Establece una altura máxima para las imágenes */
+            margin: 5px;
+            /* Añade un pequeño espacio entre las imágenes */
+            cursor: pointer;
+            /* Cambia el cursor al pasar sobre las imágenes */
+            object-fit: cover;
+            /* Ajusta la imagen al tamaño del contenedor sin deformarla */
+        }
+
+        .mensaje-confirmacion {
+            text-align: center;
+            /* Centra horizontalmente el texto */
+            position: absolute;
+            /* Posiciona el mensaje absolutamente */
+            bottom: -25px;
+            /* Ajusta la posición vertical del mensaje */
+            left: 0;
+            /* Ajusta la posición horizontal del mensaje */
+            width: 100%;
+            /* Establece el ancho del mensaje igual al contenedor */
+            padding: 5px;
+            /* Añade un poco de espacio alrededor del mensaje */
+            background-color: rgba(24, 164, 42, 0.8);
+            /* Fondo oscuro para el mensaje */
+            color: white;
+            /* Texto blanco para el mensaje */
+            display: none;
+            /* Oculta inicialmente el mensaje */
+        }
+
+        .mensaje-container {
+            position: relative;
+            /* Establece la posición relativa para el contenedor del mensaje */
+            height: 180px;
+            /* Establece una altura fija para todos los contenedores de mensajes */
+        }
+    </style>
 </head>
+
 <body>
     <header>
         <h1>Panel de creación de comunidad</h1>
@@ -22,7 +114,8 @@
                         <form action="/crear_comunidad" method="POST">
                             <div class="form-group">
                                 <label for="community_code">Código de Comunidad:</label>
-                                <input type="text" class="form-control" id="community_code" name="community_code" required>
+                                <input type="text" class="form-control" id="community_code" name="community_code"
+                                    required>
                             </div>
                             <div class="form-group">
                                 <label for="calle">Calle:</label>
@@ -39,7 +132,8 @@
                                         <div class="col-md-6 mb-4 text-center">
                                             <a href="#" class="instalacion-btn" data-instalacion="Pista de Tenis">
                                                 <div class="mensaje-container">
-                                                    <img src="../static/Content/LogoTenis.png" alt="Pista de Tenis" class="instalacion-img">
+                                                    <img src="../static/Content/LogoTenis.png" alt="Pista de Tenis"
+                                                        class="instalacion-img">
                                                     <div class="mensaje-confirmacion">Pista de Tenis añadida</div>
                                                 </div>
                                             </a>
@@ -47,7 +141,8 @@
                                         <div class="col-md-6 mb-4 text-center">
                                             <a href="#" class="instalacion-btn" data-instalacion="Pista de Pádel">
                                                 <div class="mensaje-container">
-                                                    <img src="../static/Content/LogoPadel.png" alt="Pista de Pádel" class="instalacion-img">
+                                                    <img src="../static/Content/LogoPadel.png" alt="Pista de Pádel"
+                                                        class="instalacion-img">
                                                     <div class="mensaje-confirmacion">Pista de Pádel añadida</div>
                                                 </div>
                                             </a>
@@ -55,7 +150,8 @@
                                         <div class="col-md-6 mb-4 text-center">
                                             <a href="#" class="instalacion-btn" data-instalacion="Gimnasio">
                                                 <div class="mensaje-container">
-                                                    <img src="../static/Content/LogoGYM2.png" alt="Gimnasio" class="instalacion-img">
+                                                    <img src="../static/Content/LogoGYM2.png" alt="Gimnasio"
+                                                        class="instalacion-img">
                                                     <div class="mensaje-confirmacion">Gimnasio añadido</div>
                                                 </div>
                                             </a>
@@ -63,7 +159,8 @@
                                         <div class="col-md-6 mb-4 text-center">
                                             <a href="#" class="instalacion-btn" data-instalacion="Piscina">
                                                 <div class="mensaje-container">
-                                                    <img src="../static/Content/LogoPiscina.jpg" alt="Piscina" class="instalacion-img">
+                                                    <img src="../static/Content/LogoPiscina.jpg" alt="Piscina"
+                                                        class="instalacion-img">
                                                     <div class="mensaje-confirmacion">Piscina añadida</div>
                                                 </div>
                                             </a>
@@ -71,7 +168,8 @@
                                         <div class="col-md-6 mb-4 text-center">
                                             <a href="#" class="instalacion-btn" data-instalacion="Local de Eventos">
                                                 <div class="mensaje-container">
-                                                    <img src="../static/Content/LogoEventos.jpg" alt="Local de Eventos" class="instalacion-img">
+                                                    <img src="../Content/LogoEventos.jpg" alt="Local de Eventos"
+                                                        class="instalacion-img">
                                                     <div class="mensaje-confirmacion">Local de Eventos añadido</div>
                                                 </div>
                                             </a>
@@ -80,16 +178,18 @@
                                     </div>
                                 </div>
                             </div>
-                            <button id="crear-comunidad-btn" type="submit" class="btn btn-primary">Crear Comunidad</button>
-                            <a href="/admin" class="btn btn-secondary ml-2">Volver</a>
+                            <button id="crear-comunidad-btn" type="submit" class="btn btn-primary">Crear
+                                Comunidad</button>
+                            <a href="/panel_admin" class="btn btn-secondary ml-2">Volver</a>
                         </form>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    
+
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="../static/js/crear_comunidad.js"></script>
 </body>
+
 </html>

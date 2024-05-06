@@ -53,6 +53,7 @@ public class SecurityConfig {
                 .requestMatchers("/contacto").permitAll()
                 .requestMatchers("/contacto_exitoso").permitAll()
                 .requestMatchers("/api/registro/**").permitAll()
+                .requestMatchers("/api/reserva/**").permitAll()
                 .requestMatchers("/admin").hasAuthority("ROLE_ADMIN")
                 .requestMatchers("/vecinos").hasAuthority("ROLE_VECINOS")
                 .anyRequest().authenticated())
